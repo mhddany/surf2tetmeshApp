@@ -49,7 +49,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="stlTab">
     <attribute name="title">
@@ -70,7 +70,7 @@
     <attribute name="title">
      <string>Volumetric Mesh</string>
     </attribute>
-    <widget class="QGraphicsView" name="tetView">
+    <widget class="QVTKRenderWindowInteractor" name="tetView">
      <property name="geometry">
       <rect>
        <x>10</x>

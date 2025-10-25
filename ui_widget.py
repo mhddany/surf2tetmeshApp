@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QGraphicsView, QPushButton,
-    QSizePolicy, QTabWidget, QWidget)
+from PySide6.QtWidgets import (QApplication, QDialog, QPushButton, QSizePolicy,
+    QTabWidget, QWidget)
 
-from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
+from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -42,14 +42,14 @@ class Ui_Widget(object):
         self.plotTab.addTab(self.stlTab, "")
         self.tetTab = QWidget()
         self.tetTab.setObjectName(u"tetTab")
-        self.tetView = QGraphicsView(self.tetTab)
+        self.tetView = QVTKRenderWindowInteractor(self.tetTab)
         self.tetView.setObjectName(u"tetView")
         self.tetView.setGeometry(QRect(10, 10, 371, 361))
         self.plotTab.addTab(self.tetTab, "")
 
         self.retranslateUi(Widget)
 
-        self.plotTab.setCurrentIndex(0)
+        self.plotTab.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Widget)
