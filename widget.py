@@ -17,6 +17,7 @@ class Widget(QWidget, Ui_Widget):
         # === Setup STL Viewer ===
         self.stl_renderer = vtk.vtkRenderer()
         self.stlView.GetRenderWindow().AddRenderer(self.stl_renderer)
+        self.stl_renderer.SetBackground(0.878, 0.949, 0.808) 
         self.stl_interactor = self.stlView.GetRenderWindow().GetInteractor()
         self.stl_interactor.Initialize()
 
@@ -32,6 +33,7 @@ class Widget(QWidget, Ui_Widget):
         # === Setup Tet Viewer ===
         self.tet_renderer = vtk.vtkRenderer()
         self.tetView.GetRenderWindow().AddRenderer(self.tet_renderer)
+        self.tet_renderer.SetBackground(0.83, 0.83, 0.83)
         self.tet_interactor = self.tetView.GetRenderWindow().GetInteractor()
         self.tet_interactor.Initialize()
 
@@ -82,10 +84,13 @@ class Widget(QWidget, Ui_Widget):
 
         actor = vtk.vtkActor()
         actor.SetMapper(mapper)
-        actor.GetProperty().SetColor(0.9, 0.9, 0.9)  # Light gray
+        actor.GetProperty().SetColor(0.83, 0.83, 0.83)  # Light gray
+        actor.GetProperty().EdgeVisibilityOn()              # Show edges
+        actor.GetProperty().SetEdgeColor(0.2, 0.2, 0.2)    # Dark gray edges
+        actor.GetProperty().SetLineWidth(1.0)             
 
         self.stl_renderer.AddActor(actor)
-        self.stl_renderer.SetBackground(0.1, 0.1, 0.1)
+        self.stl_renderer.SetBackground(0.878, 0.949, 0.808) 
         self.stl_renderer.ResetCamera()
 
         self.stlView.GetRenderWindow().Render()
@@ -106,8 +111,8 @@ class Widget(QWidget, Ui_Widget):
 
         # === Style settings ===
         prop = actor.GetProperty()
-        prop.SetColor(0.7, 0.7, 1.0)        # Light blue surface
-        prop.EdgeVisibilityOn()             # 🔹 Show mesh edges
+        prop.SetColor(0.878, 0.949, 0.808)  
+        prop.EdgeVisibilityOn()             # Show mesh edges
         prop.SetEdgeColor(0.2, 0.2, 0.2)    # Dark gray edges
         prop.SetLineWidth(1.0)
         prop.SetRepresentationToSurface()   # Surface + edges
@@ -116,8 +121,8 @@ class Widget(QWidget, Ui_Widget):
         self.tet_renderer.UseFXAAOn()       # Anti-aliasing
 
         # Add actor to renderer
-        self.tet_renderer.AddActor(actor)
-        self.tet_renderer.SetBackground(0.1, 0.1, 0.1)
+        self.tet_renderer.AddActor(actor)        
+        self.tet_renderer.SetBackground(0.83, 0.83, 0.83)
         self.tet_renderer.ResetCamera()
 
         # Render the updated scene
