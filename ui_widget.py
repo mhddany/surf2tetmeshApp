@@ -15,51 +15,37 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QPushButton, QSizePolicy,
-    QTabWidget, QWidget)
+from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QPushButton,
+    QSizePolicy, QWidget)
 
-from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
+from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(523, 456)
+        Widget.resize(979, 610)
         self.selectFileButton = QPushButton(Widget)
         self.selectFileButton.setObjectName(u"selectFileButton")
-        self.selectFileButton.setGeometry(QRect(430, 40, 79, 31))
+        self.selectFileButton.setGeometry(QRect(40, 460, 79, 31))
         self.generateMeshButton = QPushButton(Widget)
         self.generateMeshButton.setObjectName(u"generateMeshButton")
-        self.generateMeshButton.setGeometry(QRect(430, 80, 79, 31))
-        self.plotTab = QTabWidget(Widget)
-        self.plotTab.setObjectName(u"plotTab")
-        self.plotTab.setGeometry(QRect(20, 20, 391, 411))
-        self.stlTab = QWidget()
-        self.stlTab.setObjectName(u"stlTab")
-        self.stlView = QVTKRenderWindowInteractor(self.stlTab)
+        self.generateMeshButton.setGeometry(QRect(500, 460, 79, 31))
+        self.stlView = QVTKRenderWindowInteractor(Widget)
         self.stlView.setObjectName(u"stlView")
-        self.stlView.setGeometry(QRect(10, 10, 371, 361))
-        self.plotTab.addTab(self.stlTab, "")
-        self.tetTab = QWidget()
-        self.tetTab.setObjectName(u"tetTab")
-        self.tetView = QVTKRenderWindowInteractor(self.tetTab)
+        self.stlView.setGeometry(QRect(40, 40, 400, 400))       
+        self.tetView = QVTKRenderWindowInteractor(Widget)
         self.tetView.setObjectName(u"tetView")
-        self.tetView.setGeometry(QRect(10, 10, 371, 361))
-        self.plotTab.addTab(self.tetTab, "")
+        self.tetView.setGeometry(QRect(500, 40, 400, 400))
 
         self.retranslateUi(Widget)
-
-        self.plotTab.setCurrentIndex(1)
-
 
         QMetaObject.connectSlotsByName(Widget)
     # setupUi
 
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Dialog", None))
-        self.selectFileButton.setText(QCoreApplication.translate("Widget", u"Select", None))
+        self.selectFileButton.setText(QCoreApplication.translate("Widget", u"Select File", None))
         self.generateMeshButton.setText(QCoreApplication.translate("Widget", u"Mesh", None))
-        self.plotTab.setTabText(self.plotTab.indexOf(self.stlTab), QCoreApplication.translate("Widget", u"Surface Mesh", None))
-        self.plotTab.setTabText(self.plotTab.indexOf(self.tetTab), QCoreApplication.translate("Widget", u"Volumetric Mesh", None))
     # retranslateUi
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
-    <height>456</height>
+    <width>979</width>
+    <height>610</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,21 +16,21 @@
   <widget class="QPushButton" name="selectFileButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>40</y>
+     <x>40</x>
+     <y>460</y>
      <width>79</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Select</string>
+    <string>Select File</string>
    </property>
   </widget>
   <widget class="QPushButton" name="generateMeshButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>80</y>
+     <x>500</x>
+     <y>460</y>
      <width>79</width>
      <height>31</height>
     </rect>
@@ -39,48 +39,28 @@
     <string>Mesh</string>
    </property>
   </widget>
-  <widget class="QTabWidget" name="plotTab">
+  <widget class="QVTKRenderWindowInteractor" name="stlView">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>391</width>
-     <height>411</height>
+     <x>40</x>
+     <y>40</y>
+     <width>400</width>
+     <height>400</height>
     </rect>
    </property>
-   <property name="currentIndex">
-    <number>1</number>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Sunken</enum>
    </property>
-   <widget class="QWidget" name="stlTab">
-    <attribute name="title">
-     <string>Surface Mesh</string>
-    </attribute>
-    <widget class="QVTKRenderWindowInteractor" name="stlView">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>371</width>
-       <height>361</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tetTab">
-    <attribute name="title">
-     <string>Volumetric Mesh</string>
-    </attribute>
-    <widget class="QVTKRenderWindowInteractor" name="tetView">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>371</width>
-       <height>361</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
+  </widget>
+  <widget class="QVTKRenderWindowInteractor" name="tetView">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>40</y>
+     <width>400</width>
+     <height>400</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <customwidgets>
