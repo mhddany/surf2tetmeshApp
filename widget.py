@@ -9,6 +9,9 @@ class Widget(QWidget, Ui_Widget):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("Surf2Mesh")
+                
+        # Initialize TetGen settings
+        self.init_tetgen_settings()
 
         # === Connect button ===
         self.selectFileButton.clicked.connect(self.select_stl_file)        
@@ -79,9 +82,8 @@ class Widget(QWidget, Ui_Widget):
             print(f"Generated Tetrahedral Mesh: {self.fem_obj.fem_mesh}")
             self.display_tet_mesh(self.fem_obj.fem_mesh)
 
-        worker.finished.connect(handle_result)
+        worker.finished.connect(handle_result)      
                     
-
     # === STL display ===
     def display_stl(self, file_path):
         """Display STL mesh in stlView."""
@@ -138,3 +140,18 @@ class Widget(QWidget, Ui_Widget):
 
         # Render the updated scene
         self.tetView.GetRenderWindow().Render()
+        
+    # === Initialize TetGen Settings Widgets ===
+    def init_tetgen_settings(self):
+        # Element order (ComboBox)
+        self.orderComboBox.setCurrentIndex(0)  # default: Linear
+
+        # SpinBox / DoubleSpinBox values
+        self.mindihedralSpinBox.setValue(20)        # Min dihedral angle
+        self.minRatioDoubleSpinBox.setValue(1.5)    # Min ratio
+        self.maxVolumeDoubleSpinBox.setValue(1.0)   # Max volume
+
+        # CheckBoxes
+        self.preserveSurfaceCheckBox.setChecked(True)
+        self.verboseCheckBox.setChecked(False)
+
