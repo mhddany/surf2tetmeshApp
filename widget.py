@@ -1,6 +1,6 @@
 import vtk
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
-from PySide6.QtWidgets import QWidget, QFileDialog
+from PySide6.QtWidgets import QWidget, QFileDialog, QDialog, QVBoxLayout, QLabel, QProgressBar
 from ui_widget import Ui_Widget  # generated from Qt Designer
 
 
@@ -61,15 +61,26 @@ class Widget(QWidget, Ui_Widget):
             
     def generate_tet_mesh(self):
         from surf2tetmesh import Surf2TetMesh
+        from loader.loading_runner import FunctionProgressDialog
+        def generate_fem_task(stl_file, progress_callback=None):
+            fem_obj = Surf2TetMesh(stl_file)
+            fem_obj.generate_fem()  
+            return fem_obj
         
-        # Generate mesh from STL
-        self.fem_obj = Surf2TetMesh(self.stl_file)
-        self.fem_obj.generate_fem()
-        print(f"Generated Tetrahedral Mesh: {self.fem_obj.fem_mesh}")
-        
-        # Display in VTK widget
-        self.display_tet_mesh(self.fem_obj.fem_mesh)
-                   
+        # Create progress dialog
+        progress = FunctionProgressDialog(self, "Generating FEM mesh...")
+
+        # Run the task
+        worker = progress.run(generate_fem_task, self.stl_file)
+
+        # When the worker finishes, handle the result
+        def handle_result(fem_obj):
+            self.fem_obj = fem_obj
+            print(f"Generated Tetrahedral Mesh: {self.fem_obj.fem_mesh}")
+            self.display_tet_mesh(self.fem_obj.fem_mesh)
+
+        worker.finished.connect(handle_result)
+                    
 
     # === STL display ===
     def display_stl(self, file_path):

@@ -25,7 +25,7 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(955, 731)
+        Widget.resize(955, 659)
         Widget.setStyleSheet(u"QWidget {\n"
 "    background-color: white;\n"
 "    border: 1px solid #d0d0d0;\n"
@@ -92,7 +92,7 @@ class Ui_Widget(object):
 "")
         self.selectFileButton = QPushButton(Widget)
         self.selectFileButton.setObjectName(u"selectFileButton")
-        self.selectFileButton.setGeometry(QRect(620, 15, 81, 30))
+        self.selectFileButton.setGeometry(QRect(600, 15, 81, 30))
         font = QFont()
         font.setFamilies([u"Leelawadee UI"])
         font.setBold(True)
@@ -115,7 +115,7 @@ class Ui_Widget(object):
 "")
         self.generateMeshButton = QPushButton(Widget)
         self.generateMeshButton.setObjectName(u"generateMeshButton")
-        self.generateMeshButton.setGeometry(QRect(720, 15, 121, 30))
+        self.generateMeshButton.setGeometry(QRect(700, 15, 121, 30))
         self.generateMeshButton.setFont(font)
         self.generateMeshButton.setStyleSheet(u"QPushButton {\n"
 "    background-color: #648047;   /* Green */\n"
@@ -146,7 +146,7 @@ class Ui_Widget(object):
         self.line.setFrameShadow(QFrame.Shadow.Sunken)
         self.saveMeshButton = QPushButton(Widget)
         self.saveMeshButton.setObjectName(u"saveMeshButton")
-        self.saveMeshButton.setGeometry(QRect(862, 15, 81, 30))
+        self.saveMeshButton.setGeometry(QRect(842, 15, 81, 30))
         self.saveMeshButton.setFont(font)
         self.saveMeshButton.setStyleSheet(u"QPushButton {\n"
 "    background-color: #648047;   /* Green */\n"
@@ -166,7 +166,7 @@ class Ui_Widget(object):
 "")
         self.frameTet = QFrame(Widget)
         self.frameTet.setObjectName(u"frameTet")
-        self.frameTet.setGeometry(QRect(520, 80, 420, 400))
+        self.frameTet.setGeometry(QRect(500, 80, 420, 400))
         self.frameTet.setStyleSheet(u"QFrame {\n"
 "    background-color: #D3D3D3;\n"
 "    border: 1px solid #d0d0d0;  /* Light gray border */\n"
@@ -299,7 +299,7 @@ class Ui_Widget(object):
         self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
         self.appNameLabel = QLabel(Widget)
         self.appNameLabel.setObjectName(u"appNameLabel")
-        self.appNameLabel.setGeometry(QRect(20, 10, 301, 40))
+        self.appNameLabel.setGeometry(QRect(40, 10, 301, 40))
         font3 = QFont()
         font3.setFamilies([u"AlwynNewRounded-Regular"])
         font3.setPointSize(14)
@@ -366,22 +366,53 @@ class Ui_Widget(object):
         self.orderComboBox.addItem("")
         self.orderComboBox.setObjectName(u"orderComboBox")
         self.orderComboBox.setGeometry(QRect(220, 520, 241, 24))
-        self.orderComboBox.setStyleSheet(u"QComboBox {\n"
-"    background-color: #FFFFFF;   /* White background */\n"
-"    color: #000000;              /* Black text */\n"
-"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
-"    border-radius: 2px;          /* Rounded corners */\n"
-"    padding: 2px 6px;            /* Space inside box */\n"
+        font4 = QFont()
+        font4.setFamilies([u"AlwynNewRounded-Regular"])
+        self.orderComboBox.setFont(font4)
+        self.orderComboBox.setStyleSheet(u"/* === Base ComboBox Appearance === */\n"
+"QComboBox {\n"
+"    background-color: #FFFFFF;     /* White background */\n"
+"    color: #000000;                /* Black text */\n"
+"    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
+"    border-radius: 3px;            /* Slightly rounded corners */\n"
+"    padding: 2px 6px;\n"
 "    min-height: 18px;\n"
 "}\n"
 "\n"
-"/* Keep default arrow without removing it */\n"
-"QComboBox#orderComboBox::drop-down {\n"
+"/* === Hover and Focus States === */\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #648047;     /* Blue highlight when hovered */\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 1px solid #648047;     /* Darker blue when focused */\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"/* === Drop-down Arrow Area === */\n"
+"QComboBox::drop-down {\n"
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: top right;\n"
 "    width: 20px;\n"
-"    border-left: 1px solid #A0A0A0;\n"
-"    border-radius: 0;\n"
+"    border-left: 1px solid #A0A0A0; /* Divider line */\n"
+"    background-color: #F5F5F5;      /* Slight gray background */\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+""
+                        "/* === Drop-down Arrow Icon (keep default) === */\n"
+"QComboBox::down-arrow {\n"
+"    image: none; /* Use system default arrow */\n"
+"}\n"
+"\n"
+"/* === Popup List (the dropdown menu) === */\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color: #E0F2CE;    /* White background for dropdown list */\n"
+"    color: #000000;               /* Black text */\n"
+"    border: 1px solid #A0A0A0;   /* Thin border around dropdown */\n"
+"    selection-background-color: #D0E7FF; /* Light blue highlight */\n"
+"    selection-color: #000000;     /* Black text when selected */\n"
 "}\n"
 "")
         self.maxVolumeDoubleSpinBox = QDoubleSpinBox(Widget)
@@ -420,7 +451,8 @@ class Ui_Widget(object):
         self.preserveSurfaceCheckBox.setFont(font2)
         self.preserveSurfaceCheckBox.setStyleSheet(u"QCheckBox {\n"
 "    color: #000000;                /* Text color */\n"
-"    spacing: 4px;                  /* Space between box and label */\n"
+"    spacing: 8px;                  /* Space between box and label */\n"
+"	border: 0px solid #A0A0A0;    \n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
@@ -432,8 +464,8 @@ class Ui_Widget(object):
 "}\n"
 "\n"
 "QCheckBox::indicator:checked {\n"
-"    background-color: #28a745;     /* Green when checked */\n"
-"    border: 1px solid #28a745;\n"
+"    background-color: #648047;     /* Green when checked */\n"
+"    border: 1px solid #648047;\n"
 "}\n"
 "")
         self.verboseCheckBox = QCheckBox(Widget)
@@ -442,7 +474,8 @@ class Ui_Widget(object):
         self.verboseCheckBox.setFont(font2)
         self.verboseCheckBox.setStyleSheet(u"QCheckBox {\n"
 "    color: #000000;                /* Text color */\n"
-"    spacing: 4px;                  /* Space between box and label */\n"
+"    spacing: 8px;                  /* Space between box and label */\n"
+"	border: 0px solid #A0A0A0;    \n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
@@ -454,8 +487,8 @@ class Ui_Widget(object):
 "}\n"
 "\n"
 "QCheckBox::indicator:checked {\n"
-"    background-color: #28a745;     /* Green when checked */\n"
-"    border: 1px solid #28a745;\n"
+"    background-color: #648047;     /* Green when checked */\n"
+"    border: 1px solid #648047;\n"
 "}\n"
 "")
         self.frameTet.raise_()

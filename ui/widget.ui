@@ -727,22 +727,49 @@ QPushButton:pressed {
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QComboBox {
-    background-color: #FFFFFF;   /* White background */
-    color: #000000;              /* Black text */
-    border: 1px solid #A0A0A0;  /* Thin gray border */
-    border-radius: 2px;          /* Rounded corners */
-    padding: 2px 6px;            /* Space inside box */
+    <string notr="true">/* === Base ComboBox Appearance === */
+QComboBox {
+    background-color: #FFFFFF;     /* White background */
+    color: #000000;                /* Black text */
+    border: 1px solid #A0A0A0;    /* Thin gray border */
+    border-radius: 3px;            /* Slightly rounded corners */
+    padding: 2px 6px;
     min-height: 18px;
 }
 
-/* Keep default arrow without removing it */
-QComboBox#orderComboBox::drop-down {
+/* === Hover and Focus States === */
+QComboBox:hover {
+    border: 1px solid #648047;     /* Blue highlight when hovered */
+}
+
+QComboBox:focus {
+    border: 1px solid #648047;     /* Darker blue when focused */
+    outline: none;
+}
+
+/* === Drop-down Arrow Area === */
+QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 20px;
-    border-left: 1px solid #A0A0A0;
-    border-radius: 0;
+    border-left: 1px solid #A0A0A0; /* Divider line */
+    background-color: #F5F5F5;      /* Slight gray background */
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* === Drop-down Arrow Icon (keep default) === */
+QComboBox::down-arrow {
+    image: none; /* Use system default arrow */
+}
+
+/* === Popup List (the dropdown menu) === */
+QComboBox QAbstractItemView {
+    background-color: #E0F2CE;    /* White background for dropdown list */
+    color: #000000;               /* Black text */
+    border: 1px solid #A0A0A0;   /* Thin border around dropdown */
+    selection-background-color: #D0E7FF; /* Light blue highlight */
+    selection-color: #000000;     /* Black text when selected */
 }
 </string>
    </property>
@@ -815,6 +842,7 @@ QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
     <string notr="true">QCheckBox {
     color: #000000;                /* Text color */
     spacing: 8px;                  /* Space between box and label */
+	border: 0px solid #A0A0A0;    
 }
 
 QCheckBox::indicator {
@@ -854,6 +882,7 @@ QCheckBox::indicator:checked {
     <string notr="true">QCheckBox {
     color: #000000;                /* Text color */
     spacing: 8px;                  /* Space between box and label */
+	border: 0px solid #A0A0A0;    
 }
 
 QCheckBox::indicator {
