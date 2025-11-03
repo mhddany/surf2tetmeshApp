@@ -34,10 +34,17 @@ class Surf2TetMesh:
         plotter.show()
         '''
 
-    def generate_fem(self, order=1, mindihedral=20, minratio=1.5, maxvolume=1.0):
+    def generate_fem(self, order=1, mindihedral=20, minratio=1.5, maxvolume=1.0, psc=1.0, verbose=0.0,):
         """Generate tetrahedral FEM mesh using TetGen"""
         tet = tetgen.TetGen(self.mesh)
-        tet.tetrahedralize(order=order, mindihedral=mindihedral, minratio=minratio, maxvolume=maxvolume)
+        tet.tetrahedralize(
+            order=order,
+            mindihedral=mindihedral,
+            minratio=minratio,
+            maxvolume=maxvolume,
+            psc=psc,
+            verbose=verbose
+        )
         self.fem_mesh = tet.grid
         print(f"Generated FEM mesh with {self.fem_mesh.n_cells} tetrahedra")
 

@@ -25,78 +25,23 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(955, 659)
+        Widget.resize(1296, 871)
+        Widget.setMinimumSize(QSize(1280, 800))
+        font = QFont()
+        font.setFamilies([u"AlwynNewRounded-Regular"])
+        font.setBold(False)
+        Widget.setFont(font)
         Widget.setStyleSheet(u"QWidget {\n"
 "    background-color: white;\n"
 "    border: 1px solid #d0d0d0;\n"
 "}")
-        self.mindihedralSpinBox = QSpinBox(Widget)
-        self.mindihedralSpinBox.setObjectName(u"mindihedralSpinBox")
-        self.mindihedralSpinBox.setGeometry(QRect(220, 550, 241, 24))
-        self.mindihedralSpinBox.setStyleSheet(u"QSpinBox {\n"
-"    background-color: #FFFFFF;   /* White background */\n"
-"    color: #000000;              /* Black text */\n"
-"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
-"    border-radius: 2px;          /* Rounded corners */\n"
-"    padding: 2px 6px;            /* Space inside box */\n"
-"    min-height: 18px;\n"
-"}\n"
-"\n"
-"/* Optional: style the up/down arrows */\n"
-"QSpinBox::up-button, QSpinBox::down-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: top right;   /* up button */\n"
-"    width: 20px;\n"
-"    border-left: 1px solid #A0A0A0;\n"
-"    border-radius: 0;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-position: bottom right; /* down button */\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
-"    width: 8px;\n"
-"    height: 8px;\n"
-"}\n"
-"")
-        self.minRatioDoubleSpinBox = QDoubleSpinBox(Widget)
-        self.minRatioDoubleSpinBox.setObjectName(u"minRatioDoubleSpinBox")
-        self.minRatioDoubleSpinBox.setGeometry(QRect(220, 580, 241, 24))
-        self.minRatioDoubleSpinBox.setStyleSheet(u"QDoubleSpinBox {\n"
-"    background-color: #FFFFFF;   /* White background */\n"
-"    color: #000000;              /* Black text */\n"
-"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
-"    border-radius: 2px;          /* Rounded corners */\n"
-"    padding: 2px 6px;            /* Space inside box */\n"
-"    min-height: 18px;\n"
-"}\n"
-"\n"
-"/* Optional: style the up/down arrows */\n"
-"QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: top right;   /* up button */\n"
-"    width: 20px;\n"
-"    border-left: 1px solid #A0A0A0;\n"
-"    border-radius: 0;\n"
-"}\n"
-"\n"
-"QDoubleSpinBox::down-button {\n"
-"    subcontrol-position: bottom right; /* down button */\n"
-"}\n"
-"\n"
-"QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {\n"
-"    width: 8px;\n"
-"    height: 8px;\n"
-"}\n"
-"")
         self.selectFileButton = QPushButton(Widget)
         self.selectFileButton.setObjectName(u"selectFileButton")
-        self.selectFileButton.setGeometry(QRect(600, 15, 81, 30))
-        font = QFont()
-        font.setFamilies([u"Leelawadee UI"])
-        font.setBold(True)
-        self.selectFileButton.setFont(font)
+        self.selectFileButton.setGeometry(QRect(820, 15, 130, 30))
+        font1 = QFont()
+        font1.setFamilies([u"AlwynNewRounded-Regular"])
+        font1.setBold(True)
+        self.selectFileButton.setFont(font1)
         self.selectFileButton.setStyleSheet(u"QPushButton {\n"
 "    background-color: #648047;   /* Green */\n"
 "    color: white;                /* White text */\n"
@@ -115,8 +60,11 @@ class Ui_Widget(object):
 "")
         self.generateMeshButton = QPushButton(Widget)
         self.generateMeshButton.setObjectName(u"generateMeshButton")
-        self.generateMeshButton.setGeometry(QRect(700, 15, 121, 30))
-        self.generateMeshButton.setFont(font)
+        self.generateMeshButton.setGeometry(QRect(980, 15, 135, 30))
+        font2 = QFont()
+        font2.setFamilies([u"Leelawadee UI"])
+        font2.setBold(True)
+        self.generateMeshButton.setFont(font2)
         self.generateMeshButton.setStyleSheet(u"QPushButton {\n"
 "    background-color: #648047;   /* Green */\n"
 "    color: white;                /* White text */\n"
@@ -135,7 +83,7 @@ class Ui_Widget(object):
 "")
         self.line = QFrame(Widget)
         self.line.setObjectName(u"line")
-        self.line.setGeometry(QRect(20, 55, 921, 1))
+        self.line.setGeometry(QRect(20, 55, 1241, 1))
         self.line.setStyleSheet(u"Line {\n"
 "    background-color: #D3D3D3;  \n"
 "    max-height: 1px;             /* Thickness of the line */\n"
@@ -146,8 +94,8 @@ class Ui_Widget(object):
         self.line.setFrameShadow(QFrame.Shadow.Sunken)
         self.saveMeshButton = QPushButton(Widget)
         self.saveMeshButton.setObjectName(u"saveMeshButton")
-        self.saveMeshButton.setGeometry(QRect(842, 15, 81, 30))
-        self.saveMeshButton.setFont(font)
+        self.saveMeshButton.setGeometry(QRect(1130, 15, 130, 30))
+        self.saveMeshButton.setFont(font2)
         self.saveMeshButton.setStyleSheet(u"QPushButton {\n"
 "    background-color: #648047;   /* Green */\n"
 "    color: white;                /* White text */\n"
@@ -166,17 +114,18 @@ class Ui_Widget(object):
 "")
         self.frameTet = QFrame(Widget)
         self.frameTet.setObjectName(u"frameTet")
-        self.frameTet.setGeometry(QRect(500, 80, 420, 400))
+        self.frameTet.setGeometry(QRect(540, 80, 460, 621))
         self.frameTet.setStyleSheet(u"QFrame {\n"
 "    background-color: #D3D3D3;\n"
 "    border: 1px solid #d0d0d0;  /* Light gray border */\n"
+"	border-radius: 15px;  \n"
 "}\n"
 "")
         self.frameTet.setFrameShape(QFrame.Shape.StyledPanel)
         self.frameTet.setFrameShadow(QFrame.Shadow.Raised)
         self.tetView = QVTKRenderWindowInteractor(self.frameTet)
         self.tetView.setObjectName(u"tetView")
-        self.tetView.setGeometry(QRect(20, 40, 381, 281))
+        self.tetView.setGeometry(QRect(40, 40, 390, 450))
         self.tetView.setStyleSheet(u"QVTKRenderWindowInteractor {\n"
 "    background-color: #D3D3D3;  \n"
 "    border: 1px solid #121212;  /* Light gray border */\n"
@@ -185,10 +134,10 @@ class Ui_Widget(object):
         self.tetMeshLabel = QLabel(self.frameTet)
         self.tetMeshLabel.setObjectName(u"tetMeshLabel")
         self.tetMeshLabel.setGeometry(QRect(10, 10, 121, 21))
-        font1 = QFont()
-        font1.setFamilies([u"Alwyn"])
-        font1.setPointSize(11)
-        self.tetMeshLabel.setFont(font1)
+        font3 = QFont()
+        font3.setFamilies([u"Alwyn"])
+        font3.setPointSize(11)
+        self.tetMeshLabel.setFont(font3)
         self.tetMeshLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -197,11 +146,11 @@ class Ui_Widget(object):
 "}")
         self.tetNodesLabel = QLabel(self.frameTet)
         self.tetNodesLabel.setObjectName(u"tetNodesLabel")
-        self.tetNodesLabel.setGeometry(QRect(10, 330, 121, 21))
-        font2 = QFont()
-        font2.setFamilies([u"AlwynNewRounded-Regular"])
-        font2.setPointSize(10)
-        self.tetNodesLabel.setFont(font2)
+        self.tetNodesLabel.setGeometry(QRect(10, 550, 121, 21))
+        font4 = QFont()
+        font4.setFamilies([u"AlwynNewRounded-Regular"])
+        font4.setPointSize(10)
+        self.tetNodesLabel.setFont(font4)
         self.tetNodesLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -210,8 +159,8 @@ class Ui_Widget(object):
 "}")
         self.tetEdgesLabel = QLabel(self.frameTet)
         self.tetEdgesLabel.setObjectName(u"tetEdgesLabel")
-        self.tetEdgesLabel.setGeometry(QRect(10, 345, 121, 21))
-        self.tetEdgesLabel.setFont(font2)
+        self.tetEdgesLabel.setGeometry(QRect(10, 565, 121, 21))
+        self.tetEdgesLabel.setFont(font4)
         self.tetEdgesLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -220,8 +169,8 @@ class Ui_Widget(object):
 "}")
         self.tetElementsLabel = QLabel(self.frameTet)
         self.tetElementsLabel.setObjectName(u"tetElementsLabel")
-        self.tetElementsLabel.setGeometry(QRect(10, 360, 121, 21))
-        self.tetElementsLabel.setFont(font2)
+        self.tetElementsLabel.setGeometry(QRect(10, 580, 121, 21))
+        self.tetElementsLabel.setFont(font4)
         self.tetElementsLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -230,17 +179,18 @@ class Ui_Widget(object):
 "}")
         self.frameStl = QFrame(Widget)
         self.frameStl.setObjectName(u"frameStl")
-        self.frameStl.setGeometry(QRect(40, 80, 420, 400))
+        self.frameStl.setGeometry(QRect(40, 80, 460, 621))
         self.frameStl.setStyleSheet(u"QFrame {\n"
 "    background-color: #E0F2CE;\n"
-"    border: 1px solid #d0d0d0;  /* Light gray border */\n"
+"    border: 1px solid #E0F2CE;  /* Light gray border */\n"
+"	border-radius: 15px;  \n"
 "}\n"
 "")
         self.frameStl.setFrameShape(QFrame.Shape.StyledPanel)
         self.frameStl.setFrameShadow(QFrame.Shadow.Raised)
         self.stlView = QVTKRenderWindowInteractor(self.frameStl)
         self.stlView.setObjectName(u"stlView")
-        self.stlView.setGeometry(QRect(20, 40, 381, 281))
+        self.stlView.setGeometry(QRect(40, 40, 390, 450))
         self.stlView.setStyleSheet(u"QVTKRenderWindowInteractor {\n"
 "    background-color: #D3D3D3;  \n"
 "    border: 3px solid #121212;  /* Light gray border */\n"
@@ -249,7 +199,7 @@ class Ui_Widget(object):
         self.surfaceMeshLabel = QLabel(self.frameStl)
         self.surfaceMeshLabel.setObjectName(u"surfaceMeshLabel")
         self.surfaceMeshLabel.setGeometry(QRect(10, 10, 121, 21))
-        self.surfaceMeshLabel.setFont(font1)
+        self.surfaceMeshLabel.setFont(font3)
         self.surfaceMeshLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -258,8 +208,8 @@ class Ui_Widget(object):
 "}")
         self.stlFileNameLabel = QLabel(self.frameStl)
         self.stlFileNameLabel.setObjectName(u"stlFileNameLabel")
-        self.stlFileNameLabel.setGeometry(QRect(10, 330, 121, 21))
-        self.stlFileNameLabel.setFont(font2)
+        self.stlFileNameLabel.setGeometry(QRect(10, 550, 121, 21))
+        self.stlFileNameLabel.setFont(font4)
         self.stlFileNameLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -268,8 +218,8 @@ class Ui_Widget(object):
 "}")
         self.stlPointsLabel = QLabel(self.frameStl)
         self.stlPointsLabel.setObjectName(u"stlPointsLabel")
-        self.stlPointsLabel.setGeometry(QRect(10, 345, 121, 21))
-        self.stlPointsLabel.setFont(font2)
+        self.stlPointsLabel.setGeometry(QRect(10, 565, 121, 21))
+        self.stlPointsLabel.setFont(font4)
         self.stlPointsLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -278,32 +228,21 @@ class Ui_Widget(object):
 "}")
         self.stlVerticesLabel = QLabel(self.frameStl)
         self.stlVerticesLabel.setObjectName(u"stlVerticesLabel")
-        self.stlVerticesLabel.setGeometry(QRect(10, 360, 121, 21))
-        self.stlVerticesLabel.setFont(font2)
+        self.stlVerticesLabel.setGeometry(QRect(10, 580, 121, 21))
+        self.stlVerticesLabel.setFont(font4)
         self.stlVerticesLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
 "    border: none;                    /* No border */\n"
 "	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
 "}")
-        self.line_2 = QFrame(Widget)
-        self.line_2.setObjectName(u"line_2")
-        self.line_2.setGeometry(QRect(20, 500, 921, 1))
-        self.line_2.setStyleSheet(u"Line {\n"
-"    background-color: #D3D3D3;  \n"
-"    max-height: 1px;             /* Thickness of the line */\n"
-"    border: none;                /* Remove default frame border */\n"
-"}\n"
-"")
-        self.line_2.setFrameShape(QFrame.Shape.HLine)
-        self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
         self.appNameLabel = QLabel(Widget)
         self.appNameLabel.setObjectName(u"appNameLabel")
         self.appNameLabel.setGeometry(QRect(40, 10, 301, 40))
-        font3 = QFont()
-        font3.setFamilies([u"AlwynNewRounded-Regular"])
-        font3.setPointSize(14)
-        self.appNameLabel.setFont(font3)
+        font5 = QFont()
+        font5.setFamilies([u"AlwynNewRounded-Regular"])
+        font5.setPointSize(14)
+        self.appNameLabel.setFont(font5)
         self.appNameLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
@@ -311,51 +250,11 @@ class Ui_Widget(object):
 "	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
 "}\n"
 "")
-        self.elementOrderLabel = QLabel(Widget)
-        self.elementOrderLabel.setObjectName(u"elementOrderLabel")
-        self.elementOrderLabel.setGeometry(QRect(80, 520, 121, 21))
-        self.elementOrderLabel.setFont(font2)
-        self.elementOrderLabel.setStyleSheet(u"QLabel {\n"
-"    color: #000000;                  /* Black text */\n"
-"    background: transparent;         /* No background */\n"
-"    border: none;                    /* No border */\n"
-"	qproperty-alignment: 'AlignRight | AlignVCenter';\n"
-"}")
-        self.mindihedralangleLabel = QLabel(Widget)
-        self.mindihedralangleLabel.setObjectName(u"mindihedralangleLabel")
-        self.mindihedralangleLabel.setGeometry(QRect(80, 550, 121, 21))
-        self.mindihedralangleLabel.setFont(font2)
-        self.mindihedralangleLabel.setStyleSheet(u"QLabel {\n"
-"    color: #000000;                  /* Black text */\n"
-"    background: transparent;         /* No background */\n"
-"    border: none;                    /* No border */\n"
-"	qproperty-alignment: 'AlignRight | AlignVCenter';\n"
-"}")
-        self.minRatioLabel = QLabel(Widget)
-        self.minRatioLabel.setObjectName(u"minRatioLabel")
-        self.minRatioLabel.setGeometry(QRect(80, 580, 121, 21))
-        self.minRatioLabel.setFont(font2)
-        self.minRatioLabel.setStyleSheet(u"QLabel {\n"
-"    color: #000000;                  /* Black text */\n"
-"    background: transparent;         /* No background */\n"
-"    border: none;                    /* No border */\n"
-"	qproperty-alignment: 'AlignRight | AlignVCenter';\n"
-"}")
-        self.maxVolumeLabel = QLabel(Widget)
-        self.maxVolumeLabel.setObjectName(u"maxVolumeLabel")
-        self.maxVolumeLabel.setGeometry(QRect(80, 610, 121, 21))
-        self.maxVolumeLabel.setFont(font2)
-        self.maxVolumeLabel.setStyleSheet(u"QLabel {\n"
-"    color: #000000;                  /* Black text */\n"
-"    background: transparent;         /* No background */\n"
-"    border: none;                    /* No border */\n"
-"	qproperty-alignment: 'AlignRight | AlignVCenter';\n"
-"}")
-        self.displayModeLabel = QLabel(Widget)
-        self.displayModeLabel.setObjectName(u"displayModeLabel")
-        self.displayModeLabel.setGeometry(QRect(540, 580, 121, 21))
-        self.displayModeLabel.setFont(font2)
-        self.displayModeLabel.setStyleSheet(u"QLabel {\n"
+        self.meshSettingsLabel = QLabel(Widget)
+        self.meshSettingsLabel.setObjectName(u"meshSettingsLabel")
+        self.meshSettingsLabel.setGeometry(QRect(1040, 75, 201, 21))
+        self.meshSettingsLabel.setFont(font3)
+        self.meshSettingsLabel.setStyleSheet(u"QLabel {\n"
 "    color: #000000;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
 "    border: none;                    /* No border */\n"
@@ -365,16 +264,16 @@ class Ui_Widget(object):
         self.orderComboBox.addItem("")
         self.orderComboBox.addItem("")
         self.orderComboBox.setObjectName(u"orderComboBox")
-        self.orderComboBox.setGeometry(QRect(220, 520, 241, 24))
-        font4 = QFont()
-        font4.setFamilies([u"AlwynNewRounded-Regular"])
-        self.orderComboBox.setFont(font4)
+        self.orderComboBox.setGeometry(QRect(1040, 135, 210, 24))
+        font6 = QFont()
+        font6.setFamilies([u"AlwynNewRounded-Regular"])
+        self.orderComboBox.setFont(font6)
         self.orderComboBox.setStyleSheet(u"/* === Base ComboBox Appearance === */\n"
 "QComboBox {\n"
 "    background-color: #FFFFFF;     /* White background */\n"
 "    color: #000000;                /* Black text */\n"
 "    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
-"    border-radius: 3px;            /* Slightly rounded corners */\n"
+"    border-radius: 2px;            /* Slightly rounded corners */\n"
 "    padding: 2px 6px;\n"
 "    min-height: 18px;\n"
 "}\n"
@@ -415,9 +314,142 @@ class Ui_Widget(object):
 "    selection-color: #000000;     /* Black text when selected */\n"
 "}\n"
 "")
+        self.elementOrderLabel = QLabel(Widget)
+        self.elementOrderLabel.setObjectName(u"elementOrderLabel")
+        self.elementOrderLabel.setGeometry(QRect(1040, 110, 121, 21))
+        self.elementOrderLabel.setFont(font4)
+        self.elementOrderLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.elementOrdereExpLabel = QLabel(Widget)
+        self.elementOrdereExpLabel.setObjectName(u"elementOrdereExpLabel")
+        self.elementOrdereExpLabel.setGeometry(QRect(1040, 160, 121, 21))
+        font7 = QFont()
+        font7.setFamilies([u"AlwynNewRounded-Regular"])
+        font7.setPointSize(8)
+        self.elementOrdereExpLabel.setFont(font7)
+        self.elementOrdereExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.mindihedralangleLabel = QLabel(Widget)
+        self.mindihedralangleLabel.setObjectName(u"mindihedralangleLabel")
+        self.mindihedralangleLabel.setGeometry(QRect(1040, 200, 121, 21))
+        self.mindihedralangleLabel.setFont(font4)
+        self.mindihedralangleLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.mindihedralSpinBox = QSpinBox(Widget)
+        self.mindihedralSpinBox.setObjectName(u"mindihedralSpinBox")
+        self.mindihedralSpinBox.setGeometry(QRect(1040, 225, 210, 24))
+        self.mindihedralSpinBox.setStyleSheet(u"QSpinBox {\n"
+"    background-color: #FFFFFF;   /* White background */\n"
+"    color: #000000;              /* Black text */\n"
+"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
+"    border-radius: 2px;          /* Rounded corners */\n"
+"    padding: 2px 6px;            /* Space inside box */\n"
+"    min-height: 18px;\n"
+"}\n"
+"\n"
+"/* Optional: style the up/down arrows */\n"
+"QSpinBox::up-button, QSpinBox::down-button {\n"
+"    subcontrol-origin: border;\n"
+"    subcontrol-position: top right;   /* up button */\n"
+"    width: 20px;\n"
+"    border-left: 1px solid #A0A0A0;\n"
+"    border-radius: 0;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"    subcontrol-position: bottom right; /* down button */\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
+"    width: 8px;\n"
+"    height: 8px;\n"
+"}\n"
+"")
+        self.mindihedralangleExpLabel = QLabel(Widget)
+        self.mindihedralangleExpLabel.setObjectName(u"mindihedralangleExpLabel")
+        self.mindihedralangleExpLabel.setGeometry(QRect(1040, 250, 121, 21))
+        self.mindihedralangleExpLabel.setFont(font7)
+        self.mindihedralangleExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.minRatioDoubleSpinBox = QDoubleSpinBox(Widget)
+        self.minRatioDoubleSpinBox.setObjectName(u"minRatioDoubleSpinBox")
+        self.minRatioDoubleSpinBox.setGeometry(QRect(1040, 315, 210, 24))
+        self.minRatioDoubleSpinBox.setStyleSheet(u"QDoubleSpinBox {\n"
+"    background-color: #FFFFFF;   /* White background */\n"
+"    color: #000000;              /* Black text */\n"
+"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
+"    border-radius: 2px;          /* Rounded corners */\n"
+"    padding: 2px 6px;            /* Space inside box */\n"
+"    min-height: 18px;\n"
+"}\n"
+"\n"
+"/* Optional: style the up/down arrows */\n"
+"QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {\n"
+"    subcontrol-origin: border;\n"
+"    subcontrol-position: top right;   /* up button */\n"
+"    width: 20px;\n"
+"    border-left: 1px solid #A0A0A0;\n"
+"    border-radius: 0;\n"
+"}\n"
+"\n"
+"QDoubleSpinBox::down-button {\n"
+"    subcontrol-position: bottom right; /* down button */\n"
+"}\n"
+"\n"
+"QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {\n"
+"    width: 8px;\n"
+"    height: 8px;\n"
+"}\n"
+"")
+        self.minRatioLabel = QLabel(Widget)
+        self.minRatioLabel.setObjectName(u"minRatioLabel")
+        self.minRatioLabel.setGeometry(QRect(1040, 290, 121, 21))
+        self.minRatioLabel.setFont(font4)
+        self.minRatioLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.minRatioExpLabel = QLabel(Widget)
+        self.minRatioExpLabel.setObjectName(u"minRatioExpLabel")
+        self.minRatioExpLabel.setGeometry(QRect(1040, 340, 121, 21))
+        self.minRatioExpLabel.setFont(font7)
+        self.minRatioExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.maxVolumeLabel = QLabel(Widget)
+        self.maxVolumeLabel.setObjectName(u"maxVolumeLabel")
+        self.maxVolumeLabel.setGeometry(QRect(1040, 380, 121, 21))
+        self.maxVolumeLabel.setFont(font4)
+        self.maxVolumeLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
         self.maxVolumeDoubleSpinBox = QDoubleSpinBox(Widget)
         self.maxVolumeDoubleSpinBox.setObjectName(u"maxVolumeDoubleSpinBox")
-        self.maxVolumeDoubleSpinBox.setGeometry(QRect(220, 610, 241, 24))
+        self.maxVolumeDoubleSpinBox.setGeometry(QRect(1040, 405, 210, 24))
         self.maxVolumeDoubleSpinBox.setStyleSheet(u"QDoubleSpinBox {\n"
 "    background-color: #FFFFFF;   /* White background */\n"
 "    color: #000000;              /* Black text */\n"
@@ -445,10 +477,63 @@ class Ui_Widget(object):
 "    height: 8px;\n"
 "}\n"
 "")
+        self.maxVolumeExpLabel = QLabel(Widget)
+        self.maxVolumeExpLabel.setObjectName(u"maxVolumeExpLabel")
+        self.maxVolumeExpLabel.setGeometry(QRect(1040, 430, 121, 21))
+        self.maxVolumeExpLabel.setFont(font7)
+        self.maxVolumeExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.DisplaySettingsLabel = QLabel(Widget)
+        self.DisplaySettingsLabel.setObjectName(u"DisplaySettingsLabel")
+        self.DisplaySettingsLabel.setGeometry(QRect(1040, 580, 121, 21))
+        self.DisplaySettingsLabel.setFont(font3)
+        self.DisplaySettingsLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.verboseCheckBox = QCheckBox(Widget)
+        self.verboseCheckBox.setObjectName(u"verboseCheckBox")
+        self.verboseCheckBox.setGeometry(QRect(1040, 460, 181, 20))
+        self.verboseCheckBox.setFont(font4)
+        self.verboseCheckBox.setStyleSheet(u"QCheckBox {\n"
+"    color: #000000;                /* Text color */\n"
+"    spacing: 8px;                  /* Space between box and label */\n"
+"	border: 0px solid #A0A0A0;    \n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;                   /* Box width */\n"
+"    height: 16px;                  /* Box height */\n"
+"    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
+"    border-radius: 2px;            /* Rounded corners */\n"
+"    background-color: #FFFFFF;     /* White background */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: #648047;     /* Green when checked */\n"
+"    border: 1px solid #648047;\n"
+"}\n"
+"")
+        self.verboseExpLabel = QLabel(Widget)
+        self.verboseExpLabel.setObjectName(u"verboseExpLabel")
+        self.verboseExpLabel.setGeometry(QRect(1040, 480, 121, 21))
+        self.verboseExpLabel.setFont(font7)
+        self.verboseExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
         self.preserveSurfaceCheckBox = QCheckBox(Widget)
         self.preserveSurfaceCheckBox.setObjectName(u"preserveSurfaceCheckBox")
-        self.preserveSurfaceCheckBox.setGeometry(QRect(520, 550, 181, 20))
-        self.preserveSurfaceCheckBox.setFont(font2)
+        self.preserveSurfaceCheckBox.setGeometry(QRect(1040, 520, 181, 20))
+        self.preserveSurfaceCheckBox.setFont(font4)
         self.preserveSurfaceCheckBox.setStyleSheet(u"QCheckBox {\n"
 "    color: #000000;                /* Text color */\n"
 "    spacing: 8px;                  /* Space between box and label */\n"
@@ -468,11 +553,168 @@ class Ui_Widget(object):
 "    border: 1px solid #648047;\n"
 "}\n"
 "")
-        self.verboseCheckBox = QCheckBox(Widget)
-        self.verboseCheckBox.setObjectName(u"verboseCheckBox")
-        self.verboseCheckBox.setGeometry(QRect(520, 520, 181, 20))
-        self.verboseCheckBox.setFont(font2)
-        self.verboseCheckBox.setStyleSheet(u"QCheckBox {\n"
+        self.preserveSurfaceExpLabel = QLabel(Widget)
+        self.preserveSurfaceExpLabel.setObjectName(u"preserveSurfaceExpLabel")
+        self.preserveSurfaceExpLabel.setGeometry(QRect(1040, 540, 121, 21))
+        self.preserveSurfaceExpLabel.setFont(font7)
+        self.preserveSurfaceExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.cameraViewLabel = QLabel(Widget)
+        self.cameraViewLabel.setObjectName(u"cameraViewLabel")
+        self.cameraViewLabel.setGeometry(QRect(1040, 610, 121, 21))
+        self.cameraViewLabel.setFont(font4)
+        self.cameraViewLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft| AlignVCenter';\n"
+"}")
+        self.cameraViewComboBox = QComboBox(Widget)
+        self.cameraViewComboBox.addItem("")
+        self.cameraViewComboBox.addItem("")
+        self.cameraViewComboBox.addItem("")
+        self.cameraViewComboBox.addItem("")
+        self.cameraViewComboBox.setObjectName(u"cameraViewComboBox")
+        self.cameraViewComboBox.setGeometry(QRect(1040, 635, 210, 24))
+        self.cameraViewComboBox.setFont(font6)
+        self.cameraViewComboBox.setStyleSheet(u"/* === Base ComboBox Appearance === */\n"
+"QComboBox {\n"
+"    background-color: #FFFFFF;     /* White background */\n"
+"    color: #000000;                /* Black text */\n"
+"    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
+"    border-radius: 2px;            /* Slightly rounded corners */\n"
+"    padding: 2px 6px;\n"
+"    min-height: 18px;\n"
+"}\n"
+"\n"
+"/* === Hover and Focus States === */\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #648047;     /* Blue highlight when hovered */\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 1px solid #648047;     /* Darker blue when focused */\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"/* === Drop-down Arrow Area === */\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 20px;\n"
+"    border-left: 1px solid #A0A0A0; /* Divider line */\n"
+"    background-color: #F5F5F5;      /* Slight gray background */\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+""
+                        "/* === Drop-down Arrow Icon (keep default) === */\n"
+"QComboBox::down-arrow {\n"
+"    image: none; /* Use system default arrow */\n"
+"}\n"
+"\n"
+"/* === Popup List (the dropdown menu) === */\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color: #E0F2CE;    /* White background for dropdown list */\n"
+"    color: #000000;               /* Black text */\n"
+"    border: 1px solid #A0A0A0;   /* Thin border around dropdown */\n"
+"    selection-background-color: #D0E7FF; /* Light blue highlight */\n"
+"    selection-color: #000000;     /* Black text when selected */\n"
+"}\n"
+"")
+        self.cameraViewlExpLabel = QLabel(Widget)
+        self.cameraViewlExpLabel.setObjectName(u"cameraViewlExpLabel")
+        self.cameraViewlExpLabel.setGeometry(QRect(1040, 660, 121, 21))
+        self.cameraViewlExpLabel.setFont(font7)
+        self.cameraViewlExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.normalsLengthLabelSpinBox = QDoubleSpinBox(Widget)
+        self.normalsLengthLabelSpinBox.setObjectName(u"normalsLengthLabelSpinBox")
+        self.normalsLengthLabelSpinBox.setGeometry(QRect(1040, 725, 210, 24))
+        self.normalsLengthLabelSpinBox.setStyleSheet(u"QDoubleSpinBox {\n"
+"    background-color: #FFFFFF;   /* White background */\n"
+"    color: #000000;              /* Black text */\n"
+"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
+"    border-radius: 2px;          /* Rounded corners */\n"
+"    padding: 2px 6px;            /* Space inside box */\n"
+"    min-height: 18px;\n"
+"}\n"
+"\n"
+"/* Optional: style the up/down arrows */\n"
+"QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {\n"
+"    subcontrol-origin: border;\n"
+"    subcontrol-position: top right;   /* up button */\n"
+"    width: 20px;\n"
+"    border-left: 1px solid #A0A0A0;\n"
+"    border-radius: 0;\n"
+"}\n"
+"\n"
+"QDoubleSpinBox::down-button {\n"
+"    subcontrol-position: bottom right; /* down button */\n"
+"}\n"
+"\n"
+"QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {\n"
+"    width: 8px;\n"
+"    height: 8px;\n"
+"}\n"
+"")
+        self.normalsLengthLabel = QLabel(Widget)
+        self.normalsLengthLabel.setObjectName(u"normalsLengthLabel")
+        self.normalsLengthLabel.setGeometry(QRect(1040, 700, 121, 21))
+        self.normalsLengthLabel.setFont(font4)
+        self.normalsLengthLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.normalsLengthLabel_2 = QLabel(Widget)
+        self.normalsLengthLabel_2.setObjectName(u"normalsLengthLabel_2")
+        self.normalsLengthLabel_2.setGeometry(QRect(1040, 750, 121, 21))
+        self.normalsLengthLabel_2.setFont(font7)
+        self.normalsLengthLabel_2.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.showFacesCheckBox = QCheckBox(Widget)
+        self.showFacesCheckBox.setObjectName(u"showFacesCheckBox")
+        self.showFacesCheckBox.setGeometry(QRect(1040, 780, 181, 20))
+        self.showFacesCheckBox.setFont(font4)
+        self.showFacesCheckBox.setStyleSheet(u"QCheckBox {\n"
+"    color: #000000;                /* Text color */\n"
+"    spacing: 8px;                  /* Space between box and label */\n"
+"	border: 0px solid #A0A0A0;    \n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;                   /* Box width */\n"
+"    height: 16px;                  /* Box height */\n"
+"    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
+"    border-radius: 2px;            /* Rounded corners */\n"
+"    background-color: #FFFFFF;     /* White background */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: #648047;     /* Green when checked */\n"
+"    border: 1px solid #648047;\n"
+"}\n"
+"")
+        self.showEdgesCheckBox = QCheckBox(Widget)
+        self.showEdgesCheckBox.setObjectName(u"showEdgesCheckBox")
+        self.showEdgesCheckBox.setGeometry(QRect(1040, 820, 181, 20))
+        self.showEdgesCheckBox.setFont(font4)
+        self.showEdgesCheckBox.setStyleSheet(u"QCheckBox {\n"
 "    color: #000000;                /* Text color */\n"
 "    spacing: 8px;                  /* Space between box and label */\n"
 "	border: 0px solid #A0A0A0;    \n"
@@ -493,23 +735,37 @@ class Ui_Widget(object):
 "")
         self.frameTet.raise_()
         self.frameStl.raise_()
-        self.mindihedralSpinBox.raise_()
-        self.minRatioDoubleSpinBox.raise_()
         self.selectFileButton.raise_()
         self.generateMeshButton.raise_()
         self.line.raise_()
         self.saveMeshButton.raise_()
-        self.line_2.raise_()
         self.appNameLabel.raise_()
-        self.elementOrderLabel.raise_()
-        self.mindihedralangleLabel.raise_()
-        self.minRatioLabel.raise_()
-        self.maxVolumeLabel.raise_()
-        self.displayModeLabel.raise_()
+        self.meshSettingsLabel.raise_()
         self.orderComboBox.raise_()
+        self.elementOrderLabel.raise_()
+        self.elementOrdereExpLabel.raise_()
+        self.mindihedralangleLabel.raise_()
+        self.mindihedralSpinBox.raise_()
+        self.mindihedralangleExpLabel.raise_()
+        self.minRatioDoubleSpinBox.raise_()
+        self.minRatioLabel.raise_()
+        self.minRatioExpLabel.raise_()
+        self.maxVolumeLabel.raise_()
         self.maxVolumeDoubleSpinBox.raise_()
-        self.preserveSurfaceCheckBox.raise_()
+        self.maxVolumeExpLabel.raise_()
+        self.DisplaySettingsLabel.raise_()
         self.verboseCheckBox.raise_()
+        self.verboseExpLabel.raise_()
+        self.preserveSurfaceCheckBox.raise_()
+        self.preserveSurfaceExpLabel.raise_()
+        self.cameraViewLabel.raise_()
+        self.cameraViewComboBox.raise_()
+        self.cameraViewlExpLabel.raise_()
+        self.normalsLengthLabelSpinBox.raise_()
+        self.normalsLengthLabel.raise_()
+        self.normalsLengthLabel_2.raise_()
+        self.showFacesCheckBox.raise_()
+        self.showEdgesCheckBox.raise_()
 
         self.retranslateUi(Widget)
 
@@ -518,7 +774,7 @@ class Ui_Widget(object):
 
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Dialog", None))
-        self.selectFileButton.setText(QCoreApplication.translate("Widget", u"Select File", None))
+        self.selectFileButton.setText(QCoreApplication.translate("Widget", u"Load File", None))
         self.generateMeshButton.setText(QCoreApplication.translate("Widget", u"Generate Mesh", None))
         self.saveMeshButton.setText(QCoreApplication.translate("Widget", u"Save File", None))
         self.tetMeshLabel.setText(QCoreApplication.translate("Widget", u"Tetrahedral Mesh", None))
@@ -530,15 +786,33 @@ class Ui_Widget(object):
         self.stlPointsLabel.setText(QCoreApplication.translate("Widget", u"Points: ", None))
         self.stlVerticesLabel.setText(QCoreApplication.translate("Widget", u"vertices: ", None))
         self.appNameLabel.setText(QCoreApplication.translate("Widget", u"Surf2Tetmesh", None))
-        self.elementOrderLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
-        self.mindihedralangleLabel.setText(QCoreApplication.translate("Widget", u"Min Dihedral Angle", None))
-        self.minRatioLabel.setText(QCoreApplication.translate("Widget", u"Min Ratio", None))
-        self.maxVolumeLabel.setText(QCoreApplication.translate("Widget", u"Max Volume", None))
-        self.displayModeLabel.setText(QCoreApplication.translate("Widget", u"Display Mode", None))
+        self.meshSettingsLabel.setText(QCoreApplication.translate("Widget", u"Mesh Generation Settings", None))
         self.orderComboBox.setItemText(0, QCoreApplication.translate("Widget", u"1. Linear", None))
         self.orderComboBox.setItemText(1, QCoreApplication.translate("Widget", u"2. Quadratic", None))
 
-        self.preserveSurfaceCheckBox.setText(QCoreApplication.translate("Widget", u"Preserve Surface Feature", None))
+        self.elementOrderLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.elementOrdereExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.mindihedralangleLabel.setText(QCoreApplication.translate("Widget", u"Min Dihedral Angle", None))
+        self.mindihedralangleExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.minRatioLabel.setText(QCoreApplication.translate("Widget", u"Min Ratio", None))
+        self.minRatioExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.maxVolumeLabel.setText(QCoreApplication.translate("Widget", u"Max Volume", None))
+        self.maxVolumeExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.DisplaySettingsLabel.setText(QCoreApplication.translate("Widget", u"Display Settings", None))
         self.verboseCheckBox.setText(QCoreApplication.translate("Widget", u"Verbose", None))
+        self.verboseExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.preserveSurfaceCheckBox.setText(QCoreApplication.translate("Widget", u"Preserve Surface Feature", None))
+        self.preserveSurfaceExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.cameraViewLabel.setText(QCoreApplication.translate("Widget", u"Perspective", None))
+        self.cameraViewComboBox.setItemText(0, QCoreApplication.translate("Widget", u"3D", None))
+        self.cameraViewComboBox.setItemText(1, QCoreApplication.translate("Widget", u"X", None))
+        self.cameraViewComboBox.setItemText(2, QCoreApplication.translate("Widget", u"Y", None))
+        self.cameraViewComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Z", None))
+
+        self.cameraViewlExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.normalsLengthLabel.setText(QCoreApplication.translate("Widget", u"Normals length", None))
+        self.normalsLengthLabel_2.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.showFacesCheckBox.setText(QCoreApplication.translate("Widget", u"Show Faces", None))
+        self.showEdgesCheckBox.setText(QCoreApplication.translate("Widget", u"Show Edges", None))
     # retranslateUi
 

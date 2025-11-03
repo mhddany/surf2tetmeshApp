@@ -6,109 +6,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>955</width>
-    <height>659</height>
+    <width>1296</width>
+    <height>897</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>AlwynNewRounded-Regular</family>
+    <bold>false</bold>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QDialog {
+   <string notr="true">QWidget {
     background-color: white;
     border: 1px solid #d0d0d0;
 }</string>
   </property>
-  <widget class="QSpinBox" name="mindihedralSpinBox">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>550</y>
-     <width>241</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QSpinBox {
-    background-color: #FFFFFF;   /* White background */
-    color: #000000;              /* Black text */
-    border: 1px solid #A0A0A0;  /* Thin gray border */
-    border-radius: 2px;          /* Rounded corners */
-    padding: 2px 6px;            /* Space inside box */
-    min-height: 18px;
-}
-
-/* Optional: style the up/down arrows */
-QSpinBox::up-button, QSpinBox::down-button {
-    subcontrol-origin: border;
-    subcontrol-position: top right;   /* up button */
-    width: 20px;
-    border-left: 1px solid #A0A0A0;
-    border-radius: 0;
-}
-
-QSpinBox::down-button {
-    subcontrol-position: bottom right; /* down button */
-}
-
-QSpinBox::up-arrow, QSpinBox::down-arrow {
-    width: 8px;
-    height: 8px;
-}
-</string>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="minRatioDoubleSpinBox">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>580</y>
-     <width>241</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QDoubleSpinBox {
-    background-color: #FFFFFF;   /* White background */
-    color: #000000;              /* Black text */
-    border: 1px solid #A0A0A0;  /* Thin gray border */
-    border-radius: 2px;          /* Rounded corners */
-    padding: 2px 6px;            /* Space inside box */
-    min-height: 18px;
-}
-
-/* Optional: style the up/down arrows */
-QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
-    subcontrol-origin: border;
-    subcontrol-position: top right;   /* up button */
-    width: 20px;
-    border-left: 1px solid #A0A0A0;
-    border-radius: 0;
-}
-
-QDoubleSpinBox::down-button {
-    subcontrol-position: bottom right; /* down button */
-}
-
-QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
-    width: 8px;
-    height: 8px;
-}
-</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="selectFileButton">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>820</x>
      <y>15</y>
-     <width>81</width>
+     <width>130</width>
      <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Leelawadee UI</family>
+     <family>AlwynNewRounded-Regular</family>
      <bold>true</bold>
     </font>
    </property>
@@ -131,15 +65,15 @@ QPushButton:pressed {
 </string>
    </property>
    <property name="text">
-    <string>Select File</string>
+    <string>Load File</string>
    </property>
   </widget>
   <widget class="QPushButton" name="generateMeshButton">
    <property name="geometry">
     <rect>
-     <x>700</x>
+     <x>980</x>
      <y>15</y>
-     <width>121</width>
+     <width>135</width>
      <height>30</height>
     </rect>
    </property>
@@ -176,7 +110,7 @@ QPushButton:pressed {
     <rect>
      <x>20</x>
      <y>55</y>
-     <width>921</width>
+     <width>1241</width>
      <height>1</height>
     </rect>
    </property>
@@ -195,9 +129,9 @@ QPushButton:pressed {
   <widget class="QPushButton" name="saveMeshButton">
    <property name="geometry">
     <rect>
-     <x>842</x>
+     <x>1130</x>
      <y>15</y>
-     <width>81</width>
+     <width>130</width>
      <height>30</height>
     </rect>
    </property>
@@ -232,16 +166,17 @@ QPushButton:pressed {
   <widget class="QFrame" name="frameTet">
    <property name="geometry">
     <rect>
-     <x>500</x>
+     <x>540</x>
      <y>80</y>
-     <width>420</width>
-     <height>400</height>
+     <width>460</width>
+     <height>621</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QFrame {
     background-color: #D3D3D3;
     border: 1px solid #d0d0d0;  /* Light gray border */
+	border-radius: 15px;  
 }
 </string>
    </property>
@@ -254,10 +189,10 @@ QPushButton:pressed {
    <widget class="QVTKRenderWindowInteractor" name="tetView">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>40</y>
-      <width>381</width>
-      <height>281</height>
+      <width>390</width>
+      <height>450</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -299,7 +234,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>330</y>
+      <y>550</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -326,7 +261,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>345</y>
+      <y>565</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -353,7 +288,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>580</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -382,14 +317,15 @@ QPushButton:pressed {
     <rect>
      <x>40</x>
      <y>80</y>
-     <width>420</width>
-     <height>400</height>
+     <width>460</width>
+     <height>621</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QFrame {
     background-color: #E0F2CE;
-    border: 1px solid #d0d0d0;  /* Light gray border */
+    border: 1px solid #E0F2CE;  /* Light gray border */
+	border-radius: 15px;  
 }
 </string>
    </property>
@@ -402,10 +338,10 @@ QPushButton:pressed {
    <widget class="QVTKRenderWindowInteractor" name="stlView">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>40</y>
-      <width>381</width>
-      <height>281</height>
+      <width>390</width>
+      <height>450</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -450,7 +386,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>330</y>
+      <y>550</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -477,7 +413,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>345</y>
+      <y>565</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -504,7 +440,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>580</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -527,27 +463,6 @@ QPushButton:pressed {
      <string>vertices: </string>
     </property>
    </widget>
-  </widget>
-  <widget class="Line" name="line_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>500</y>
-     <width>921</width>
-     <height>1</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">Line {
-    background-color: #D3D3D3;  
-    max-height: 1px;             /* Thickness of the line */
-    border: none;                /* Remove default frame border */
-}
-</string>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
-   </property>
   </widget>
   <widget class="QLabel" name="appNameLabel">
    <property name="geometry">
@@ -577,127 +492,19 @@ QPushButton:pressed {
     <string>Surf2Tetmesh</string>
    </property>
   </widget>
-  <widget class="QLabel" name="elementOrderLabel">
+  <widget class="QLabel" name="meshSettingsLabel">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>520</y>
-     <width>121</width>
+     <x>1040</x>
+     <y>75</y>
+     <width>201</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>AlwynNewRounded-Regular</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel {
-    color: #000000;                  /* Black text */
-    background: transparent;         /* No background */
-    border: none;                    /* No border */
-	qproperty-alignment: 'AlignRight | AlignVCenter';
-}</string>
-   </property>
-   <property name="text">
-    <string>Element Order</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="mindihedralangleLabel">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>550</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>AlwynNewRounded-Regular</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel {
-    color: #000000;                  /* Black text */
-    background: transparent;         /* No background */
-    border: none;                    /* No border */
-	qproperty-alignment: 'AlignRight | AlignVCenter';
-}</string>
-   </property>
-   <property name="text">
-    <string>Min Dihedral Angle</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="minRatioLabel">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>580</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>AlwynNewRounded-Regular</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel {
-    color: #000000;                  /* Black text */
-    background: transparent;         /* No background */
-    border: none;                    /* No border */
-	qproperty-alignment: 'AlignRight | AlignVCenter';
-}</string>
-   </property>
-   <property name="text">
-    <string>Min Ratio</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="maxVolumeLabel">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>610</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>AlwynNewRounded-Regular</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel {
-    color: #000000;                  /* Black text */
-    background: transparent;         /* No background */
-    border: none;                    /* No border */
-	qproperty-alignment: 'AlignRight | AlignVCenter';
-}</string>
-   </property>
-   <property name="text">
-    <string>Max Volume</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="displayModeLabel">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>580</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>AlwynNewRounded-Regular</family>
-     <pointsize>10</pointsize>
+     <family>Alwyn</family>
+     <pointsize>11</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -709,15 +516,15 @@ QPushButton:pressed {
 }</string>
    </property>
    <property name="text">
-    <string>Display Mode</string>
+    <string>Mesh Generation Settings</string>
    </property>
   </widget>
   <widget class="QComboBox" name="orderComboBox">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>520</y>
-     <width>241</width>
+     <x>1040</x>
+     <y>135</y>
+     <width>210</width>
      <height>24</height>
     </rect>
    </property>
@@ -732,7 +539,7 @@ QComboBox {
     background-color: #FFFFFF;     /* White background */
     color: #000000;                /* Black text */
     border: 1px solid #A0A0A0;    /* Thin gray border */
-    border-radius: 3px;            /* Slightly rounded corners */
+    border-radius: 2px;            /* Slightly rounded corners */
     padding: 2px 6px;
     min-height: 18px;
 }
@@ -784,12 +591,159 @@ QComboBox QAbstractItemView {
     </property>
    </item>
   </widget>
-  <widget class="QDoubleSpinBox" name="maxVolumeDoubleSpinBox">
+  <widget class="QLabel" name="elementOrderLabel">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>610</y>
-     <width>241</width>
+     <x>1040</x>
+     <y>110</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #000000;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="elementOrdereExpLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>160</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mindihedralangleLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>200</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #000000;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Min Dihedral Angle</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="mindihedralSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>225</y>
+     <width>210</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox {
+    background-color: #FFFFFF;   /* White background */
+    color: #000000;              /* Black text */
+    border: 1px solid #A0A0A0;  /* Thin gray border */
+    border-radius: 2px;          /* Rounded corners */
+    padding: 2px 6px;            /* Space inside box */
+    min-height: 18px;
+}
+
+/* Optional: style the up/down arrows */
+QSpinBox::up-button, QSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;   /* up button */
+    width: 20px;
+    border-left: 1px solid #A0A0A0;
+    border-radius: 0;
+}
+
+QSpinBox::down-button {
+    subcontrol-position: bottom right; /* down button */
+}
+
+QSpinBox::up-arrow, QSpinBox::down-arrow {
+    width: 8px;
+    height: 8px;
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mindihedralangleExpLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>250</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="minRatioDoubleSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>315</y>
+     <width>210</width>
      <height>24</height>
     </rect>
    </property>
@@ -823,13 +777,13 @@ QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
 </string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="preserveSurfaceCheckBox">
+  <widget class="QLabel" name="minRatioLabel">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>550</y>
-     <width>181</width>
-     <height>20</height>
+     <x>1040</x>
+     <y>290</y>
+     <width>121</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -839,35 +793,169 @@ QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QCheckBox {
-    color: #000000;                /* Text color */
-    spacing: 8px;                  /* Space between box and label */
-	border: 0px solid #A0A0A0;    
+    <string notr="true">QLabel {
+    color: #000000;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Min Ratio</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="minRatioExpLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>340</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="maxVolumeLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>380</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #000000;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Max Volume</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="maxVolumeDoubleSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>405</y>
+     <width>210</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QDoubleSpinBox {
+    background-color: #FFFFFF;   /* White background */
+    color: #000000;              /* Black text */
+    border: 1px solid #A0A0A0;  /* Thin gray border */
+    border-radius: 2px;          /* Rounded corners */
+    padding: 2px 6px;            /* Space inside box */
+    min-height: 18px;
 }
 
-QCheckBox::indicator {
-    width: 16px;                   /* Box width */
-    height: 16px;                  /* Box height */
-    border: 1px solid #A0A0A0;    /* Thin gray border */
-    border-radius: 2px;            /* Rounded corners */
-    background-color: #FFFFFF;     /* White background */
+/* Optional: style the up/down arrows */
+QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;   /* up button */
+    width: 20px;
+    border-left: 1px solid #A0A0A0;
+    border-radius: 0;
 }
 
-QCheckBox::indicator:checked {
-    background-color: #648047;     /* Green when checked */
-    border: 1px solid #648047;
+QDoubleSpinBox::down-button {
+    subcontrol-position: bottom right; /* down button */
+}
+
+QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
+    width: 8px;
+    height: 8px;
 }
 </string>
    </property>
+  </widget>
+  <widget class="QLabel" name="maxVolumeExpLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>430</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
    <property name="text">
-    <string>Preserve Surface Feature</string>
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="DisplaySettingsLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>580</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Alwyn</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #000000;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Display Settings</string>
    </property>
   </widget>
   <widget class="QCheckBox" name="verboseCheckBox">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>520</y>
+     <x>1040</x>
+     <y>460</y>
      <width>181</width>
      <height>20</height>
     </rect>
@@ -902,26 +990,499 @@ QCheckBox::indicator:checked {
    <property name="text">
     <string>Verbose</string>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="verboseExpLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>480</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="preserveSurfaceCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>520</y>
+     <width>181</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox {
+    color: #000000;                /* Text color */
+    spacing: 8px;                  /* Space between box and label */
+	border: 0px solid #A0A0A0;    
+}
+
+QCheckBox::indicator {
+    width: 16px;                   /* Box width */
+    height: 16px;                  /* Box height */
+    border: 1px solid #A0A0A0;    /* Thin gray border */
+    border-radius: 2px;            /* Rounded corners */
+    background-color: #FFFFFF;     /* White background */
+}
+
+QCheckBox::indicator:checked {
+    background-color: #648047;     /* Green when checked */
+    border: 1px solid #648047;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Preserve Surface Feature</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="preserveSurfaceExpLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>540</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cameraViewLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>610</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #000000;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft| AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Perspective</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="cameraViewComboBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>635</y>
+     <width>210</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* === Base ComboBox Appearance === */
+QComboBox {
+    background-color: #FFFFFF;     /* White background */
+    color: #000000;                /* Black text */
+    border: 1px solid #A0A0A0;    /* Thin gray border */
+    border-radius: 2px;            /* Slightly rounded corners */
+    padding: 2px 6px;
+    min-height: 18px;
+}
+
+/* === Hover and Focus States === */
+QComboBox:hover {
+    border: 1px solid #648047;     /* Blue highlight when hovered */
+}
+
+QComboBox:focus {
+    border: 1px solid #648047;     /* Darker blue when focused */
+    outline: none;
+}
+
+/* === Drop-down Arrow Area === */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left: 1px solid #A0A0A0; /* Divider line */
+    background-color: #F5F5F5;      /* Slight gray background */
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* === Drop-down Arrow Icon (keep default) === */
+QComboBox::down-arrow {
+    image: none; /* Use system default arrow */
+}
+
+/* === Popup List (the dropdown menu) === */
+QComboBox QAbstractItemView {
+    background-color: #E0F2CE;    /* White background for dropdown list */
+    color: #000000;               /* Black text */
+    border: 1px solid #A0A0A0;   /* Thin border around dropdown */
+    selection-background-color: #D0E7FF; /* Light blue highlight */
+    selection-color: #000000;     /* Black text when selected */
+}
+</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>3D</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Y</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Z</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="cameraViewlExpLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>660</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="normalsLengthLabelSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>725</y>
+     <width>210</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QDoubleSpinBox {
+    background-color: #FFFFFF;   /* White background */
+    color: #000000;              /* Black text */
+    border: 1px solid #A0A0A0;  /* Thin gray border */
+    border-radius: 2px;          /* Rounded corners */
+    padding: 2px 6px;            /* Space inside box */
+    min-height: 18px;
+}
+
+/* Optional: style the up/down arrows */
+QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;   /* up button */
+    width: 20px;
+    border-left: 1px solid #A0A0A0;
+    border-radius: 0;
+}
+
+QDoubleSpinBox::down-button {
+    subcontrol-position: bottom right; /* down button */
+}
+
+QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
+    width: 8px;
+    height: 8px;
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="normalsLengthLabel">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>700</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #000000;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Normals length</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="normalsLengthLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>750</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #5f5f5f;                  /* Black text */
+    background: transparent;         /* No background */
+    border: none;                    /* No border */
+	qproperty-alignment: 'AlignLeft | AlignVCenter';
+}</string>
+   </property>
+   <property name="text">
+    <string>Element Order</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="showFacesCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>780</y>
+     <width>181</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox {
+    color: #000000;                /* Text color */
+    spacing: 8px;                  /* Space between box and label */
+	border: 0px solid #A0A0A0;    
+}
+
+QCheckBox::indicator {
+    width: 16px;                   /* Box width */
+    height: 16px;                  /* Box height */
+    border: 1px solid #A0A0A0;    /* Thin gray border */
+    border-radius: 2px;            /* Rounded corners */
+    background-color: #FFFFFF;     /* White background */
+}
+
+QCheckBox::indicator:checked {
+    background-color: #648047;     /* Green when checked */
+    border: 1px solid #648047;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Show Faces</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="showEdgesCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>820</y>
+     <width>181</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox {
+    color: #000000;                /* Text color */
+    spacing: 8px;                  /* Space between box and label */
+	border: 0px solid #A0A0A0;    
+}
+
+QCheckBox::indicator {
+    width: 16px;                   /* Box width */
+    height: 16px;                  /* Box height */
+    border: 1px solid #A0A0A0;    /* Thin gray border */
+    border-radius: 2px;            /* Rounded corners */
+    background-color: #FFFFFF;     /* White background */
+}
+
+QCheckBox::indicator:checked {
+    background-color: #648047;     /* Green when checked */
+    border: 1px solid #648047;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Show Edges</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="showPointsCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>860</y>
+     <width>181</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>AlwynNewRounded-Regular</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox {
+    color: #000000;                /* Text color */
+    spacing: 8px;                  /* Space between box and label */
+	border: 0px solid #A0A0A0;    
+}
+
+QCheckBox::indicator {
+    width: 16px;                   /* Box width */
+    height: 16px;                  /* Box height */
+    border: 1px solid #A0A0A0;    /* Thin gray border */
+    border-radius: 2px;            /* Rounded corners */
+    background-color: #FFFFFF;     /* White background */
+}
+
+QCheckBox::indicator:checked {
+    background-color: #648047;     /* Green when checked */
+    border: 1px solid #648047;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Show Points</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
   </widget>
   <zorder>frameTet</zorder>
   <zorder>frameStl</zorder>
-  <zorder>mindihedralSpinBox</zorder>
-  <zorder>minRatioDoubleSpinBox</zorder>
   <zorder>selectFileButton</zorder>
   <zorder>generateMeshButton</zorder>
   <zorder>line</zorder>
   <zorder>saveMeshButton</zorder>
-  <zorder>line_2</zorder>
   <zorder>appNameLabel</zorder>
-  <zorder>elementOrderLabel</zorder>
-  <zorder>mindihedralangleLabel</zorder>
-  <zorder>minRatioLabel</zorder>
-  <zorder>maxVolumeLabel</zorder>
-  <zorder>displayModeLabel</zorder>
+  <zorder>meshSettingsLabel</zorder>
   <zorder>orderComboBox</zorder>
+  <zorder>elementOrderLabel</zorder>
+  <zorder>elementOrdereExpLabel</zorder>
+  <zorder>mindihedralangleLabel</zorder>
+  <zorder>mindihedralSpinBox</zorder>
+  <zorder>mindihedralangleExpLabel</zorder>
+  <zorder>minRatioDoubleSpinBox</zorder>
+  <zorder>minRatioLabel</zorder>
+  <zorder>minRatioExpLabel</zorder>
+  <zorder>maxVolumeLabel</zorder>
   <zorder>maxVolumeDoubleSpinBox</zorder>
-  <zorder>preserveSurfaceCheckBox</zorder>
+  <zorder>maxVolumeExpLabel</zorder>
+  <zorder>DisplaySettingsLabel</zorder>
   <zorder>verboseCheckBox</zorder>
+  <zorder>verboseExpLabel</zorder>
+  <zorder>preserveSurfaceCheckBox</zorder>
+  <zorder>preserveSurfaceExpLabel</zorder>
+  <zorder>cameraViewLabel</zorder>
+  <zorder>cameraViewComboBox</zorder>
+  <zorder>cameraViewlExpLabel</zorder>
+  <zorder>normalsLengthLabelSpinBox</zorder>
+  <zorder>normalsLengthLabel</zorder>
+  <zorder>normalsLengthLabel_2</zorder>
+  <zorder>showFacesCheckBox</zorder>
+  <zorder>showEdgesCheckBox</zorder>
+  <zorder>showPointsCheckBox</zorder>
  </widget>
  <customwidgets>
   <customwidget>
