@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDialog,
     QDoubleSpinBox, QFrame, QLabel, QPushButton,
-    QSizePolicy, QSpinBox, QWidget)
+    QScrollArea, QSizePolicy, QSpinBox, QWidget)
 
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
@@ -25,7 +25,7 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(1280, 897)
+        Widget.resize(1419, 901)
         Widget.setMinimumSize(QSize(1280, 800))
         font = QFont()
         font.setFamilies([u"AlwynNewRounded-Regular"])
@@ -125,7 +125,7 @@ class Ui_Widget(object):
         self.frameTet.setFrameShadow(QFrame.Shadow.Raised)
         self.tetView = QVTKRenderWindowInteractor(self.frameTet)
         self.tetView.setObjectName(u"tetView")
-        self.tetView.setGeometry(QRect(40, 40, 390, 450))
+        self.tetView.setGeometry(QRect(40, 40, 390, 501))
         self.tetView.setStyleSheet(u"QVTKRenderWindowInteractor {\n"
 "    background-color: #D3D3D3;  \n"
 "    border: 1px solid #121212;  /* Light gray border */\n"
@@ -190,7 +190,7 @@ class Ui_Widget(object):
         self.frameStl.setFrameShadow(QFrame.Shadow.Raised)
         self.stlView = QVTKRenderWindowInteractor(self.frameStl)
         self.stlView.setObjectName(u"stlView")
-        self.stlView.setGeometry(QRect(40, 40, 390, 450))
+        self.stlView.setGeometry(QRect(40, 40, 390, 500))
         self.stlView.setStyleSheet(u"QVTKRenderWindowInteractor {\n"
 "    background-color: #D3D3D3;  \n"
 "    border: 3px solid #121212;  /* Light gray border */\n"
@@ -773,6 +773,14 @@ class Ui_Widget(object):
 "    border: none;                    /* No border */\n"
 "	qproperty-alignment: 'AlignLeft| AlignVCenter';\n"
 "}")
+        self.scrollArea = QScrollArea(Widget)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setGeometry(QRect(1280, 60, 120, 641))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 118, 639))
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.frameTet.raise_()
         self.frameStl.raise_()
         self.selectFileButton.raise_()
@@ -807,6 +815,7 @@ class Ui_Widget(object):
         self.viewModeComboBox.raise_()
         self.viewModelExpLabel.raise_()
         self.viewModeLabel.raise_()
+        self.scrollArea.raise_()
 
         self.retranslateUi(Widget)
 

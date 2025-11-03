@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>897</height>
+    <width>1419</width>
+    <height>901</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -192,7 +192,7 @@ QPushButton:pressed {
       <x>40</x>
       <y>40</y>
       <width>390</width>
-      <height>500</height>
+      <height>501</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1486,6 +1486,29 @@ QComboBox QAbstractItemView {
     <string>View Mode</string>
    </property>
   </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>1280</x>
+     <y>60</y>
+     <width>120</width>
+     <height>641</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>118</width>
+      <height>639</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
   <zorder>frameTet</zorder>
   <zorder>frameStl</zorder>
   <zorder>selectFileButton</zorder>
@@ -1520,6 +1543,7 @@ QComboBox QAbstractItemView {
   <zorder>viewModeComboBox</zorder>
   <zorder>viewModelExpLabel</zorder>
   <zorder>viewModeLabel</zorder>
+  <zorder>scrollArea</zorder>
  </widget>
  <customwidgets>
   <customwidget>
