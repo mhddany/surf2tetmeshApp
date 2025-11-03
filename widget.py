@@ -119,7 +119,11 @@ class Widget(QWidget, Ui_Widget):
         self.stl_renderer.ResetCamera()
         self.stlView.GetRenderWindow().Render()
 
+        # Update display settings
         self.update_view_settings()
+
+        # Update STL info labels
+        self.update_stl_info_labels(mesh_polydata, self.stl_file)
 
     # === Tet display ===
     def display_tet_mesh(self, vtk_unstructured_grid):
@@ -155,7 +159,11 @@ class Widget(QWidget, Ui_Widget):
         # Render the updated scene
         self.tetView.GetRenderWindow().Render()
         
+        # Update display settings
         self.update_view_settings()
+
+        # Update Tet mesh info labels
+        self.update_tet_info_labels(self.tet_mesh)
         
     # === Initialize TetGen Settings Widgets ===
     def init_tetgen_settings(self):
@@ -223,6 +231,58 @@ class Widget(QWidget, Ui_Widget):
             camera.SetFocalPoint(center)
             renderer.ResetCamera()
             renderer.GetRenderWindow().Render()
+            
+    def update_stl_info_labels(self, mesh_polydata, file_path=None):
+        """
+        Update STL info labels:
+        - File name
+        - Number of points
+        - Number of faces (vertices)
+        """
+        import os
+
+        # Update file name
+        if file_path:
+            file_name = os.path.basename(file_path)
+        else:
+            file_name = "Unknown"
+        self.stlFileNameLabel.setText(f"File: {file_name}")
+
+        # Update number of points
+        n_points = mesh_polydata.n_points
+        self.stlPointsLabel.setText(f"Points: {n_points}")
+
+        # Update number of faces / vertices
+        n_faces = mesh_polydata.n_cells
+        self.stlVerticesLabel.setText(f"Faces: {n_faces}")
+        
+    def update_tet_info_labels(self, tet_mesh):
+        """
+        Update tetrahedral mesh info labels:
+        - Nodes
+        - Edges
+        - Elements (tets)
+        """
+        if tet_mesh is None:
+            self.tetNodesLabel.setText("Nodes: 0")
+            self.tetEdgesLabel.setText("Edges: 0")
+            self.tetElementsLabel.setText("Elements: 0")
+            return
+
+        # Number of nodes
+        n_nodes = tet_mesh.n_points
+        self.tetNodesLabel.setText(f"Nodes: {n_nodes}")
+
+        # Number of edges
+        # Extract edges as PolyData and count lines
+        edges_polydata = tet_mesh.extract_all_edges()
+        n_edges = edges_polydata.n_lines
+        self.tetEdgesLabel.setText(f"Edges: {n_edges}")
+
+        # Number of elements (tets)
+        n_elements = tet_mesh.n_cells
+        self.tetElementsLabel.setText(f"Elements: {n_elements}")
+
             
     def update_view_settings(self):
         """
