@@ -25,7 +25,7 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(1296, 871)
+        Widget.resize(1296, 897)
         Widget.setMinimumSize(QSize(1280, 800))
         font = QFont()
         font.setFamilies([u"AlwynNewRounded-Regular"])
@@ -520,6 +520,7 @@ class Ui_Widget(object):
 "    border: 1px solid #648047;\n"
 "}\n"
 "")
+        self.verboseCheckBox.setChecked(True)
         self.verboseExpLabel = QLabel(Widget)
         self.verboseExpLabel.setObjectName(u"verboseExpLabel")
         self.verboseExpLabel.setGeometry(QRect(1040, 480, 121, 21))
@@ -553,6 +554,7 @@ class Ui_Widget(object):
 "    border: 1px solid #648047;\n"
 "}\n"
 "")
+        self.preserveSurfaceCheckBox.setChecked(True)
         self.preserveSurfaceExpLabel = QLabel(Widget)
         self.preserveSurfaceExpLabel.setObjectName(u"preserveSurfaceExpLabel")
         self.preserveSurfaceExpLabel.setGeometry(QRect(1040, 540, 121, 21))
@@ -677,62 +679,90 @@ class Ui_Widget(object):
 "    border: none;                    /* No border */\n"
 "	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
 "}")
-        self.normalsLengthLabel_2 = QLabel(Widget)
-        self.normalsLengthLabel_2.setObjectName(u"normalsLengthLabel_2")
-        self.normalsLengthLabel_2.setGeometry(QRect(1040, 750, 121, 21))
-        self.normalsLengthLabel_2.setFont(font7)
-        self.normalsLengthLabel_2.setStyleSheet(u"QLabel {\n"
+        self.normalsLengthExpLabel = QLabel(Widget)
+        self.normalsLengthExpLabel.setObjectName(u"normalsLengthExpLabel")
+        self.normalsLengthExpLabel.setGeometry(QRect(1040, 750, 121, 21))
+        self.normalsLengthExpLabel.setFont(font7)
+        self.normalsLengthExpLabel.setStyleSheet(u"QLabel {\n"
 "    color: #5f5f5f;                  /* Black text */\n"
 "    background: transparent;         /* No background */\n"
 "    border: none;                    /* No border */\n"
 "	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
 "}")
-        self.showFacesCheckBox = QCheckBox(Widget)
-        self.showFacesCheckBox.setObjectName(u"showFacesCheckBox")
-        self.showFacesCheckBox.setGeometry(QRect(1040, 780, 181, 20))
-        self.showFacesCheckBox.setFont(font4)
-        self.showFacesCheckBox.setStyleSheet(u"QCheckBox {\n"
-"    color: #000000;                /* Text color */\n"
-"    spacing: 8px;                  /* Space between box and label */\n"
-"	border: 0px solid #A0A0A0;    \n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 16px;                   /* Box width */\n"
-"    height: 16px;                  /* Box height */\n"
-"    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
-"    border-radius: 2px;            /* Rounded corners */\n"
+        self.viewModeComboBox = QComboBox(Widget)
+        self.viewModeComboBox.addItem("")
+        self.viewModeComboBox.addItem("")
+        self.viewModeComboBox.addItem("")
+        self.viewModeComboBox.addItem("")
+        self.viewModeComboBox.setObjectName(u"viewModeComboBox")
+        self.viewModeComboBox.setGeometry(QRect(1040, 815, 210, 24))
+        self.viewModeComboBox.setFont(font6)
+        self.viewModeComboBox.setStyleSheet(u"/* === Base ComboBox Appearance === */\n"
+"QComboBox {\n"
 "    background-color: #FFFFFF;     /* White background */\n"
+"    color: #000000;                /* Black text */\n"
+"    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
+"    border-radius: 2px;            /* Slightly rounded corners */\n"
+"    padding: 2px 6px;\n"
+"    min-height: 18px;\n"
 "}\n"
 "\n"
-"QCheckBox::indicator:checked {\n"
-"    background-color: #648047;     /* Green when checked */\n"
-"    border: 1px solid #648047;\n"
+"/* === Hover and Focus States === */\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #648047;     /* Blue highlight when hovered */\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 1px solid #648047;     /* Darker blue when focused */\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"/* === Drop-down Arrow Area === */\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 20px;\n"
+"    border-left: 1px solid #A0A0A0; /* Divider line */\n"
+"    background-color: #F5F5F5;      /* Slight gray background */\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+""
+                        "/* === Drop-down Arrow Icon (keep default) === */\n"
+"QComboBox::down-arrow {\n"
+"    image: none; /* Use system default arrow */\n"
+"}\n"
+"\n"
+"/* === Popup List (the dropdown menu) === */\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color: #E0F2CE;    /* White background for dropdown list */\n"
+"    color: #000000;               /* Black text */\n"
+"    border: 1px solid #A0A0A0;   /* Thin border around dropdown */\n"
+"    selection-background-color: #D0E7FF; /* Light blue highlight */\n"
+"    selection-color: #000000;     /* Black text when selected */\n"
 "}\n"
 "")
-        self.showEdgesCheckBox = QCheckBox(Widget)
-        self.showEdgesCheckBox.setObjectName(u"showEdgesCheckBox")
-        self.showEdgesCheckBox.setGeometry(QRect(1040, 820, 181, 20))
-        self.showEdgesCheckBox.setFont(font4)
-        self.showEdgesCheckBox.setStyleSheet(u"QCheckBox {\n"
-"    color: #000000;                /* Text color */\n"
-"    spacing: 8px;                  /* Space between box and label */\n"
-"	border: 0px solid #A0A0A0;    \n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 16px;                   /* Box width */\n"
-"    height: 16px;                  /* Box height */\n"
-"    border: 1px solid #A0A0A0;    /* Thin gray border */\n"
-"    border-radius: 2px;            /* Rounded corners */\n"
-"    background-color: #FFFFFF;     /* White background */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-color: #648047;     /* Green when checked */\n"
-"    border: 1px solid #648047;\n"
-"}\n"
-"")
+        self.viewModelExpLabel = QLabel(Widget)
+        self.viewModelExpLabel.setObjectName(u"viewModelExpLabel")
+        self.viewModelExpLabel.setGeometry(QRect(1040, 840, 121, 21))
+        self.viewModelExpLabel.setFont(font7)
+        self.viewModelExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+        self.viewModeLabel = QLabel(Widget)
+        self.viewModeLabel.setObjectName(u"viewModeLabel")
+        self.viewModeLabel.setGeometry(QRect(1040, 790, 121, 21))
+        self.viewModeLabel.setFont(font4)
+        self.viewModeLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft| AlignVCenter';\n"
+"}")
         self.frameTet.raise_()
         self.frameStl.raise_()
         self.selectFileButton.raise_()
@@ -763,9 +793,10 @@ class Ui_Widget(object):
         self.cameraViewlExpLabel.raise_()
         self.normalsLengthLabelSpinBox.raise_()
         self.normalsLengthLabel.raise_()
-        self.normalsLengthLabel_2.raise_()
-        self.showFacesCheckBox.raise_()
-        self.showEdgesCheckBox.raise_()
+        self.normalsLengthExpLabel.raise_()
+        self.viewModeComboBox.raise_()
+        self.viewModelExpLabel.raise_()
+        self.viewModeLabel.raise_()
 
         self.retranslateUi(Widget)
 
@@ -811,8 +842,13 @@ class Ui_Widget(object):
 
         self.cameraViewlExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
         self.normalsLengthLabel.setText(QCoreApplication.translate("Widget", u"Normals length", None))
-        self.normalsLengthLabel_2.setText(QCoreApplication.translate("Widget", u"Element Order", None))
-        self.showFacesCheckBox.setText(QCoreApplication.translate("Widget", u"Show Faces", None))
-        self.showEdgesCheckBox.setText(QCoreApplication.translate("Widget", u"Show Edges", None))
+        self.normalsLengthExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.viewModeComboBox.setItemText(0, QCoreApplication.translate("Widget", u"Surface", None))
+        self.viewModeComboBox.setItemText(1, QCoreApplication.translate("Widget", u"Surface + Edges", None))
+        self.viewModeComboBox.setItemText(2, QCoreApplication.translate("Widget", u"Wireframe", None))
+        self.viewModeComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Points", None))
+
+        self.viewModelExpLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
+        self.viewModeLabel.setText(QCoreApplication.translate("Widget", u"View Mode", None))
     # retranslateUi
 

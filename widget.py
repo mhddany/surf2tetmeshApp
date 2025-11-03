@@ -2,6 +2,8 @@ import vtk
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 from PySide6.QtWidgets import QWidget, QFileDialog, QDialog, QVBoxLayout, QLabel, QProgressBar
 from ui_widget import Ui_Widget  # generated from Qt Designer
+import numpy as np
+import pyvista as pv
 
 
 class Widget(QWidget, Ui_Widget):
@@ -47,12 +49,16 @@ class Widget(QWidget, Ui_Widget):
         self.tet_axes_widget.SetInteractor(self.tet_interactor)
         self.tet_axes_widget.SetViewport(0.0, 0.0, 0.2, 0.2)
         self.tet_axes_widget.SetEnabled(1)
-        self.tet_axes_widget.InteractiveOff()
+        self.tet_axes_widget.InteractiveOff()        
         
-        
+        self.stl_actor = None
+        self.tet_actor = None
+        self.stl_normals_actor = None
+        self.tet_normals_actor = None
+                
         self.cameraViewComboBox.currentTextChanged.connect(self.update_view_settings)
-        self.showFacesCheckBox.toggled.connect(self.update_view_settings)
-        self.showEdgesCheckBox.toggled.connect(self.update_view_settings)
+        self.viewModeComboBox.currentTextChanged.connect(self.update_view_settings)
+        self.normalsLengthLabelSpinBox.valueChanged.connect(self.update_view_settings)
 
     # === File selection ===
     def select_stl_file(self):
@@ -64,8 +70,9 @@ class Widget(QWidget, Ui_Widget):
         )
         if file_path:
             self.stl_file = file_path
-            print(f"Selected STL: {self.stl_file}")
-            self.display_stl(self.stl_file)
+            self.stl_mesh = pv.read(file_path)
+            print(f"Selected STL: {file_path}")
+            self.display_stl(self.stl_mesh)
             
     def generate_tet_mesh(self):
         from surf2tetmesh import Surf2TetMesh
@@ -85,38 +92,34 @@ class Widget(QWidget, Ui_Widget):
         # When the worker finishes, handle the result
         def handle_result(fem_obj):
             self.fem_obj = fem_obj
+            self.tet_mesh = self.fem_obj.fem_mesh
             print(f"Generated Tetrahedral Mesh: {self.fem_obj.fem_mesh}")
             self.display_tet_mesh(self.fem_obj.fem_mesh)
 
         worker.finished.connect(handle_result)      
                     
     # === STL display ===
-    def display_stl(self, file_path):
+    def display_stl(self, mesh_polydata):
         """Display STL mesh in stlView."""
         self.stl_renderer.RemoveAllViewProps()
 
-        reader = vtk.vtkSTLReader()
-        reader.SetFileName(file_path)
-
         mapper = vtk.vtkPolyDataMapper()
-        mapper.SetInputConnection(reader.GetOutputPort())
+        mapper.SetInputData(mesh_polydata)
 
         actor = vtk.vtkActor()
         actor.SetMapper(mapper)
-        actor.GetProperty().SetColor(0.83, 0.83, 0.83)  # Light gray
-        actor.GetProperty().EdgeVisibilityOn()              # Show edges
-        actor.GetProperty().SetEdgeColor(0.2, 0.2, 0.2)    # Dark gray edges
-        actor.GetProperty().SetLineWidth(1.0)  
-        self.stl_actor = actor  # Store reference for later use           
+        actor.GetProperty().SetColor(0.83, 0.83, 0.83)
+        actor.GetProperty().EdgeVisibilityOn()
+        actor.GetProperty().SetEdgeColor(0.2, 0.2, 0.2)
+        actor.GetProperty().SetLineWidth(1.0)
 
+        self.stl_actor = actor
         self.stl_renderer.AddActor(actor)
-        self.stl_renderer.SetBackground(0.878, 0.949, 0.808) 
+        self.stl_renderer.SetBackground(0.878, 0.949, 0.808)
         self.stl_renderer.ResetCamera()
-
         self.stlView.GetRenderWindow().Render()
-        
-        current_view = self.cameraViewComboBox.currentText()
-        self.on_camera_view_changed(current_view)
+
+        self.update_view_settings()
 
     # === Tet display ===
     def display_tet_mesh(self, vtk_unstructured_grid):
@@ -152,8 +155,7 @@ class Widget(QWidget, Ui_Widget):
         # Render the updated scene
         self.tetView.GetRenderWindow().Render()
         
-        current_view = self.cameraViewComboBox.currentText()
-        self.on_camera_view_changed(current_view)
+        self.update_view_settings()
         
     # === Initialize TetGen Settings Widgets ===
     def init_tetgen_settings(self):
@@ -223,32 +225,126 @@ class Widget(QWidget, Ui_Widget):
             renderer.GetRenderWindow().Render()
             
     def update_view_settings(self):
-        """Apply all current display settings to both STL and TET viewers."""
-        # === 1. Camera View ===
+        """
+        Apply all current display settings to both STL and Tet viewers:
+        - Camera orientation
+        - Display mode (Surface, Surface+Edges, Wireframe, Points)
+        - Normals arrows (controlled by spinbox)
+        """
+        # --- 1. Camera ---
         current_view = self.cameraViewComboBox.currentText()
         self.on_camera_view_changed(current_view)
 
-        # === 2. Mesh Display Style ===
-        show_faces = self.showFacesCheckBox.isChecked()
-        show_edges = self.showEdgesCheckBox.isChecked()      
+        # --- 2. Display Mode ---
+        display_mode = self.viewModeComboBox.currentText()
+        normals_length = self.normalsLengthLabelSpinBox.value()
 
-        for actor, renderer, view in [
-            (getattr(self, "stl_actor", None), self.stl_renderer, self.stlView),
-            (getattr(self, "tet_actor", None), self.tet_renderer, self.tetView)
+        for actor, renderer, view, normals_actor_attr in [
+            (self.stl_actor, self.stl_renderer, self.stlView, "stl_normals_actor"),
+            (self.tet_actor, self.tet_renderer, self.tetView, "tet_normals_actor")
         ]:
             if actor is None:
-                continue  # Mesh not yet loaded
+                print("no available actors")
+                continue
+                
 
             prop = actor.GetProperty()
+            # Reset
+            prop.SetRepresentationToSurface()
+            prop.EdgeVisibilityOff()
+            prop.SetOpacity(1.0)
 
-            # --- Faces ---
-            if show_faces:
+            # Display mode
+            if display_mode == "Surface":
                 prop.SetRepresentationToSurface()
-            else:
-                prop.SetRepresentationToWireframe()
-
-            # --- Edges ---
-            if show_edges:
-                prop.EdgeVisibilityOn()
-            else:
                 prop.EdgeVisibilityOff()
+            elif display_mode == "Surface + Edges":
+                prop.SetRepresentationToSurface()
+                prop.EdgeVisibilityOn()
+            elif display_mode == "Wireframe":
+                prop.SetRepresentationToWireframe()
+                prop.EdgeVisibilityOff()
+            elif display_mode == "Points":
+                prop.SetRepresentationToPoints()
+                prop.SetPointSize(4)
+
+            # --- Normals ---
+            # Remove previous normals actor
+            if getattr(self, normals_actor_attr, None):
+                renderer.RemoveActor(getattr(self, normals_actor_attr))
+                setattr(self, normals_actor_attr, None)
+
+            if normals_length > 0:
+                # Compute normals
+                # For STL, actor.GetMapper().GetInput() returns vtkPolyData
+                # For Tet, convert actor to PyVista PolyData or use stored mesh
+                mesh = getattr(self, "stl_mesh" if actor == self.stl_actor else "tet_mesh", None)
+                if mesh is None:
+                    print("no available mesh")
+                    continue
+
+                centroids, normals, surf_polydata = self.compute_surface_normals(mesh)
+
+                # Create VTK points
+                points = vtk.vtkPoints()
+                for c in centroids:
+                    points.InsertNextPoint(c)
+
+                pd = vtk.vtkPolyData()
+                pd.SetPoints(points)
+
+                vectors = vtk.vtkFloatArray()
+                vectors.SetNumberOfComponents(3)
+                vectors.SetName("Normals")
+                for n in normals * normals_length:
+                    vectors.InsertNextTuple(n)
+                pd.GetPointData().SetVectors(vectors)
+
+                # Glyph arrows
+                arrow_source = vtk.vtkArrowSource()
+                glyph = vtk.vtkGlyph3D()
+                glyph.SetSourceConnection(arrow_source.GetOutputPort())
+                glyph.SetInputData(pd)
+                glyph.SetVectorModeToUseVector()
+                glyph.SetScaleModeToScaleByVector()
+                glyph.SetScaleFactor(1.0)
+                glyph.Update()
+
+                normals_actor = vtk.vtkActor()
+                mapper = vtk.vtkPolyDataMapper()
+                mapper.SetInputConnection(glyph.GetOutputPort())
+                normals_actor.SetMapper(mapper)
+                normals_actor.GetProperty().SetColor(1, 0, 0)  # red
+
+                renderer.AddActor(normals_actor)
+                setattr(self, normals_actor_attr, normals_actor)
+
+            # Re-render
+            renderer.GetRenderWindow().Render()    
+    
+    def compute_surface_normals(self, mesh):
+        """
+        Compute centroids and normals of surface triangles.
+        mesh: pyvista.PolyData or pyvista.UnstructuredGrid
+        Returns: centroids, normals, surf_polydata
+        """
+        if mesh is None:
+            return None, None, None
+
+        # If mesh is UnstructuredGrid, extract surface
+        if isinstance(mesh, pv.UnstructuredGrid):
+            surf = mesh.extract_surface()
+        else:
+            # assume PolyData
+            surf = mesh
+
+        nodes = surf.points
+        faces_raw = surf.faces.reshape(-1, 4)[:, 1:] 
+        centroids = np.mean(nodes[faces_raw], axis=1)
+        v1 = nodes[faces_raw[:, 0]]
+        v2 = nodes[faces_raw[:, 1]]
+        v3 = nodes[faces_raw[:, 2]]
+        normals = np.cross(v2 - v1, v3 - v1)
+        normals /= np.linalg.norm(normals, axis=1)[:, np.newaxis]
+        return centroids, normals, surf
+
