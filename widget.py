@@ -1,7 +1,7 @@
 import vtk
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 from PySide6.QtWidgets import QWidget, QFileDialog, QDialog, QVBoxLayout, QLabel, QProgressBar
-from ui_widget import Ui_Widget  # generated from Qt Designer
+from ui_applayout import Ui_Widget  # generated from Qt Designer
 import numpy as np
 import pyvista as pv
 
