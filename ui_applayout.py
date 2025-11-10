@@ -15,10 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
-    QFrame, QGridLayout, QGroupBox, QHBoxLayout,
-    QLabel, QPushButton, QScrollArea, QSizePolicy,
-    QSpinBox, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QComboBox,
+    QDoubleSpinBox, QFrame, QGridLayout, QGroupBox,
+    QHBoxLayout, QLabel, QPushButton, QScrollArea,
+    QSizePolicy, QSlider, QSpinBox, QVBoxLayout,
+    QWidget)
 
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
@@ -26,7 +27,7 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(1280, 800)
+        Widget.resize(1280, 606)
         Widget.setStyleSheet(u"background-color: #ffffff;\n"
 "\n"
 "\n"
@@ -461,7 +462,7 @@ class Ui_Widget(object):
         self.rightScrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 226, 874))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 226, 967))
         self.horizontalLayout_3 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(1, 1, 1, 1)
@@ -567,63 +568,6 @@ class Ui_Widget(object):
 
         self.verticalLayout_6.addWidget(self.cameraViewlExpLabel)
 
-        self.normalsLengthLabel = QLabel(self.display_setting_groupbox)
-        self.normalsLengthLabel.setObjectName(u"normalsLengthLabel")
-        self.normalsLengthLabel.setFont(font4)
-        self.normalsLengthLabel.setStyleSheet(u"QLabel {\n"
-"    color: #000000;                  /* Black text */\n"
-"    background: transparent;         /* No background */\n"
-"    border: none;                    /* No border */\n"
-"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
-"}")
-
-        self.verticalLayout_6.addWidget(self.normalsLengthLabel)
-
-        self.normalsLengthLabelSpinBox = QDoubleSpinBox(self.display_setting_groupbox)
-        self.normalsLengthLabelSpinBox.setObjectName(u"normalsLengthLabelSpinBox")
-        self.normalsLengthLabelSpinBox.setStyleSheet(u"QDoubleSpinBox {\n"
-"    background-color: #FFFFFF;   /* White background */\n"
-"    color: #000000;              /* Black text */\n"
-"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
-"    border-radius: 2px;          /* Rounded corners */\n"
-"    padding: 2px 6px;            /* Space inside box */\n"
-"    min-height: 18px;\n"
-"}\n"
-"\n"
-"/* Optional: style the up/down arrows */\n"
-"QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {\n"
-"    subcontrol-origin: border;\n"
-"    subcontrol-position: top right;   /* up button */\n"
-"    width: 20px;\n"
-"    border-left: 1px solid #A0A0A0;\n"
-"    border-radius: 0;\n"
-"}\n"
-"\n"
-"QDoubleSpinBox::down-button {\n"
-"    subcontrol-position: bottom right; /* down button */\n"
-"}\n"
-"\n"
-"QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {\n"
-"    width: 8px;\n"
-"    height: 8px;\n"
-"}\n"
-"")
-
-        self.verticalLayout_6.addWidget(self.normalsLengthLabelSpinBox)
-
-        self.normalsLengthExpLabel = QLabel(self.display_setting_groupbox)
-        self.normalsLengthExpLabel.setObjectName(u"normalsLengthExpLabel")
-        self.normalsLengthExpLabel.setFont(font6)
-        self.normalsLengthExpLabel.setStyleSheet(u"QLabel {\n"
-"    color: #5f5f5f;                  /* Black text */\n"
-"    background: transparent;         /* No background */\n"
-"    border: none;                    /* No border */\n"
-"	qproperty-alignment: 'AlignLeft | AlignTop';\n"
-"}")
-        self.normalsLengthExpLabel.setWordWrap(True)
-
-        self.verticalLayout_6.addWidget(self.normalsLengthExpLabel)
-
         self.viewModeLabel = QLabel(self.display_setting_groupbox)
         self.viewModeLabel.setObjectName(u"viewModeLabel")
         self.viewModeLabel.setFont(font4)
@@ -704,6 +648,155 @@ class Ui_Widget(object):
         self.viewModelExpLabel.setWordWrap(True)
 
         self.verticalLayout_6.addWidget(self.viewModelExpLabel)
+
+        self.tesselatedLabel = QLabel(self.display_setting_groupbox)
+        self.tesselatedLabel.setObjectName(u"tesselatedLabel")
+        font7 = QFont()
+        font7.setFamilies([u"AlwynNewRounded-Regular"])
+        font7.setPointSize(10)
+        font7.setBold(False)
+        self.tesselatedLabel.setFont(font7)
+        self.tesselatedLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+
+        self.verticalLayout_6.addWidget(self.tesselatedLabel)
+
+        self.tessellatedSlider = QSlider(self.display_setting_groupbox)
+        self.tessellatedSlider.setObjectName(u"tessellatedSlider")
+        sizePolicy.setHeightForWidth(self.tessellatedSlider.sizePolicy().hasHeightForWidth())
+        self.tessellatedSlider.setSizePolicy(sizePolicy)
+        self.tessellatedSlider.setStyleSheet(u"/* === Horizontal Slider === */\n"
+"QSlider::groove:horizontal {\n"
+"    height: 8px;\n"
+"    background: qlineargradient(\n"
+"        x1: 0, y1: 0, x2: 1, y2: 0,\n"
+"        stop: 0 #E0F2CE, stop: 1 #c6d8b1\n"
+"    );\n"
+"    border-radius: 4px;\n"
+"    margin: 0 5px;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: qlineargradient(\n"
+"        x1: 0, y1: 0, x2: 1, y2: 0,\n"
+"        stop: 0 #648047, stop: 1 #7ea857\n"
+"    );\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal {\n"
+"    background: #E0F2CE;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background: #ffffff;\n"
+"    border: 2px solid #648047;\n"
+"    width: 14px;\n"
+"    height: 18px;\n"
+"    border-radius: 9px;\n"
+"    margin: -5px 0;\n"
+"    transition: all 0.5s ease;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"    background: #648047;\n"
+"    border: 2px solid #ffffff;\n"
+"\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:pressed {\n"
+"    background: #7ea857;\n"
+"   "
+                        " border: 2px solid #ffffff;\n"
+"}\n"
+"")
+        self.tessellatedSlider.setOrientation(Qt.Orientation.Horizontal)
+        self.tessellatedSlider.setTickInterval(0)
+
+        self.verticalLayout_6.addWidget(self.tessellatedSlider)
+
+        self.tesselatedExpLabel = QLabel(self.display_setting_groupbox)
+        self.tesselatedExpLabel.setObjectName(u"tesselatedExpLabel")
+        font8 = QFont()
+        font8.setFamilies([u"AlwynNewRounded-Regular"])
+        font8.setPointSize(8)
+        font8.setBold(False)
+        self.tesselatedExpLabel.setFont(font8)
+        self.tesselatedExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignTop';\n"
+"}")
+        self.tesselatedExpLabel.setMidLineWidth(0)
+        self.tesselatedExpLabel.setWordWrap(True)
+
+        self.verticalLayout_6.addWidget(self.tesselatedExpLabel)
+
+        self.normalsLengthLabel = QLabel(self.display_setting_groupbox)
+        self.normalsLengthLabel.setObjectName(u"normalsLengthLabel")
+        self.normalsLengthLabel.setFont(font4)
+        self.normalsLengthLabel.setStyleSheet(u"QLabel {\n"
+"    color: #000000;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignVCenter';\n"
+"}")
+
+        self.verticalLayout_6.addWidget(self.normalsLengthLabel)
+
+        self.normalsLengthLabelSpinBox = QDoubleSpinBox(self.display_setting_groupbox)
+        self.normalsLengthLabelSpinBox.setObjectName(u"normalsLengthLabelSpinBox")
+        self.normalsLengthLabelSpinBox.setStyleSheet(u"QDoubleSpinBox {\n"
+"    background-color: #FFFFFF;   /* White background */\n"
+"    color: #000000;              /* Black text */\n"
+"    border: 1px solid #A0A0A0;  /* Thin gray border */\n"
+"    border-radius: 2px;          /* Rounded corners */\n"
+"    padding: 2px 6px;            /* Space inside box */\n"
+"    min-height: 18px;\n"
+"}\n"
+"\n"
+"/* Optional: style the up/down arrows */\n"
+"QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {\n"
+"    subcontrol-origin: border;\n"
+"    subcontrol-position: top right;   /* up button */\n"
+"    width: 20px;\n"
+"    border-left: 1px solid #A0A0A0;\n"
+"    border-radius: 0;\n"
+"}\n"
+"\n"
+"QDoubleSpinBox::down-button {\n"
+"    subcontrol-position: bottom right; /* down button */\n"
+"}\n"
+"\n"
+"QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {\n"
+"    width: 8px;\n"
+"    height: 8px;\n"
+"}\n"
+"")
+        self.normalsLengthLabelSpinBox.setMaximum(20.000000000000000)
+        self.normalsLengthLabelSpinBox.setSingleStep(0.500000000000000)
+        self.normalsLengthLabelSpinBox.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
+
+        self.verticalLayout_6.addWidget(self.normalsLengthLabelSpinBox)
+
+        self.normalsLengthExpLabel = QLabel(self.display_setting_groupbox)
+        self.normalsLengthExpLabel.setObjectName(u"normalsLengthExpLabel")
+        self.normalsLengthExpLabel.setFont(font6)
+        self.normalsLengthExpLabel.setStyleSheet(u"QLabel {\n"
+"    color: #5f5f5f;                  /* Black text */\n"
+"    background: transparent;         /* No background */\n"
+"    border: none;                    /* No border */\n"
+"	qproperty-alignment: 'AlignLeft | AlignTop';\n"
+"}")
+        self.normalsLengthExpLabel.setWordWrap(True)
+
+        self.verticalLayout_6.addWidget(self.normalsLengthExpLabel)
 
         self.line = QFrame(self.display_setting_groupbox)
         self.line.setObjectName(u"line")
@@ -848,6 +941,7 @@ class Ui_Widget(object):
 "    height: 8px;\n"
 "}\n"
 "")
+        self.mindihedralSpinBox.setMaximum(90)
 
         self.verticalLayout_7.addWidget(self.mindihedralSpinBox)
 
@@ -1103,8 +1197,6 @@ class Ui_Widget(object):
         self.cameraViewComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Z", None))
 
         self.cameraViewlExpLabel.setText(QCoreApplication.translate("Widget", u"Choose the view angle", None))
-        self.normalsLengthLabel.setText(QCoreApplication.translate("Widget", u"Normals length", None))
-        self.normalsLengthExpLabel.setText(QCoreApplication.translate("Widget", u"Adjust the length of surface normals; set to 0 to hide them.", None))
         self.viewModeLabel.setText(QCoreApplication.translate("Widget", u"View Mode", None))
         self.viewModeComboBox.setItemText(0, QCoreApplication.translate("Widget", u"Surface", None))
         self.viewModeComboBox.setItemText(1, QCoreApplication.translate("Widget", u"Surface + Edges", None))
@@ -1112,6 +1204,10 @@ class Ui_Widget(object):
         self.viewModeComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Points", None))
 
         self.viewModelExpLabel.setText(QCoreApplication.translate("Widget", u"Select how the mesh is displayed", None))
+        self.tesselatedLabel.setText(QCoreApplication.translate("Widget", u"Tessellated Mesh", None))
+        self.tesselatedExpLabel.setText(QCoreApplication.translate("Widget", u"Choose 1 for linear tetrahedra or 2 for quadratic tetrahedra.", None))
+        self.normalsLengthLabel.setText(QCoreApplication.translate("Widget", u"Normals length", None))
+        self.normalsLengthExpLabel.setText(QCoreApplication.translate("Widget", u"Adjust the length of surface normals; set to 0 to hide them.", None))
         self.tetgen_setting_groupbox.setTitle(QCoreApplication.translate("Widget", u"Meshing Settings", None))
         self.elementOrderLabel.setText(QCoreApplication.translate("Widget", u"Element Order", None))
         self.orderComboBox.setItemText(0, QCoreApplication.translate("Widget", u"1. Linear", None))
