@@ -3,6 +3,53 @@ import numpy as np
 import pyvista as pv
 import os
 
+def setup_stl_viewer(widget):
+    """Initialize the STL viewer inside the given widget."""
+    widget.stl_renderer = vtk.vtkRenderer()
+    widget.stlView.GetRenderWindow().AddRenderer(widget.stl_renderer)
+    widget.stl_renderer.SetBackground(0.878, 0.949, 0.808) 
+    widget.stl_interactor = widget.stlView.GetRenderWindow().GetInteractor()
+    widget.stl_interactor.Initialize()
+
+    # Add axes
+    axes = vtk.vtkAxesActor()
+    widget.stl_axes_widget = vtk.vtkOrientationMarkerWidget()
+    widget.stl_axes_widget.SetOrientationMarker(axes)
+    widget.stl_axes_widget.SetInteractor(widget.stl_interactor)
+    widget.stl_axes_widget.SetViewport(0.0, 0.0, 0.2, 0.2)
+    widget.stl_axes_widget.SetEnabled(1)
+    widget.stl_axes_widget.InteractiveOff()
+
+
+def setup_tet_viewer(widget):
+    """Initialize the Tet viewer inside the given widget."""
+    widget.tet_renderer = vtk.vtkRenderer()
+    widget.tetView.GetRenderWindow().AddRenderer(widget.tet_renderer)
+    widget.tet_renderer.SetBackground(0.83, 0.83, 0.83)
+    widget.tet_interactor = widget.tetView.GetRenderWindow().GetInteractor()
+    widget.tet_interactor.Initialize()
+
+    # Add axes
+    axes = vtk.vtkAxesActor()
+    widget.tet_axes_widget = vtk.vtkOrientationMarkerWidget()
+    widget.tet_axes_widget.SetOrientationMarker(axes)
+    widget.tet_axes_widget.SetInteractor(widget.tet_interactor)
+    widget.tet_axes_widget.SetViewport(0.0, 0.0, 0.2, 0.2)
+    widget.tet_axes_widget.SetEnabled(1)
+    widget.tet_axes_widget.InteractiveOff()
+
+
+def setup_viewers(widget):
+    """Setup both STL and Tet viewers."""
+    setup_stl_viewer(widget)
+    setup_tet_viewer(widget)
+
+    # Initialize actors
+    widget.stl_actor = None
+    widget.tet_actor = None
+    widget.stl_normals_actor = None
+    widget.tet_normals_actor = None
+
 def update_stl_info_labels(widget, mesh_polydata, file_path=None):
     """
     Update STL info labels:
