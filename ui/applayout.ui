@@ -645,9 +645,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
+                <y>-364</y>
                 <width>226</width>
-                <height>967</height>
+                <height>858</height>
                </rect>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -943,12 +943,11 @@ QComboBox QAbstractItemView {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="tesselatedLabel">
+                      <widget class="QLabel" name="normalsLengthLabel">
                        <property name="font">
                         <font>
                          <family>AlwynNewRounded-Regular</family>
                          <pointsize>10</pointsize>
-                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -960,18 +959,12 @@ QComboBox QAbstractItemView {
 }</string>
                        </property>
                        <property name="text">
-                        <string>Tessellated Mesh</string>
+                        <string>Normals length ratio: 0 %</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSlider" name="tessellatedSlider">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QSlider" name="normalsLengthLabelSlider">
                        <property name="styleSheet">
                         <string notr="true">/* === Horizontal Slider === */
 QSlider::groove:horizontal {
@@ -1024,100 +1017,6 @@ QSlider::handle:horizontal:pressed {
                        </property>
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
-                       </property>
-                       <property name="tickInterval">
-                        <number>0</number>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QLabel" name="tesselatedExpLabel">
-                       <property name="font">
-                        <font>
-                         <family>AlwynNewRounded-Regular</family>
-                         <pointsize>8</pointsize>
-                         <bold>false</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel {
-    color: #5f5f5f;                  /* Black text */
-    background: transparent;         /* No background */
-    border: none;                    /* No border */
-	qproperty-alignment: 'AlignLeft | AlignTop';
-}</string>
-                       </property>
-                       <property name="midLineWidth">
-                        <number>0</number>
-                       </property>
-                       <property name="text">
-                        <string>Choose 1 for linear tetrahedra or 2 for quadratic tetrahedra.</string>
-                       </property>
-                       <property name="wordWrap">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QLabel" name="normalsLengthLabel">
-                       <property name="font">
-                        <font>
-                         <family>AlwynNewRounded-Regular</family>
-                         <pointsize>10</pointsize>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel {
-    color: #000000;                  /* Black text */
-    background: transparent;         /* No background */
-    border: none;                    /* No border */
-	qproperty-alignment: 'AlignLeft | AlignVCenter';
-}</string>
-                       </property>
-                       <property name="text">
-                        <string>Normals length</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QDoubleSpinBox" name="normalsLengthLabelSpinBox">
-                       <property name="styleSheet">
-                        <string notr="true">QDoubleSpinBox {
-    background-color: #FFFFFF;   /* White background */
-    color: #000000;              /* Black text */
-    border: 1px solid #A0A0A0;  /* Thin gray border */
-    border-radius: 2px;          /* Rounded corners */
-    padding: 2px 6px;            /* Space inside box */
-    min-height: 18px;
-}
-
-/* Optional: style the up/down arrows */
-QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
-    subcontrol-origin: border;
-    subcontrol-position: top right;   /* up button */
-    width: 20px;
-    border-left: 1px solid #A0A0A0;
-    border-radius: 0;
-}
-
-QDoubleSpinBox::down-button {
-    subcontrol-position: bottom right; /* down button */
-}
-
-QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
-    width: 8px;
-    height: 8px;
-}
-</string>
-                       </property>
-                       <property name="maximum">
-                        <double>20.000000000000000</double>
-                       </property>
-                       <property name="singleStep">
-                        <double>0.500000000000000</double>
-                       </property>
-                       <property name="stepType">
-                        <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
                        </property>
                       </widget>
                      </item>
@@ -1320,43 +1219,64 @@ QComboBox QAbstractItemView {
 }</string>
                        </property>
                        <property name="text">
-                        <string>Min Dihedral Angle</string>
+                        <string>Min Dihedral Angle: 0°</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="mindihedralSpinBox">
+                      <widget class="QSlider" name="mindihedralSlider">
                        <property name="styleSheet">
-                        <string notr="true">QSpinBox {
-    background-color: #FFFFFF;   /* White background */
-    color: #000000;              /* Black text */
-    border: 1px solid #A0A0A0;  /* Thin gray border */
-    border-radius: 2px;          /* Rounded corners */
-    padding: 2px 6px;            /* Space inside box */
-    min-height: 18px;
-}
-
-/* Optional: style the up/down arrows */
-QSpinBox::up-button, QSpinBox::down-button {
-    subcontrol-origin: border;
-    subcontrol-position: top right;   /* up button */
-    width: 20px;
-    border-left: 1px solid #A0A0A0;
-    border-radius: 0;
-}
-
-QSpinBox::down-button {
-    subcontrol-position: bottom right; /* down button */
-}
-
-QSpinBox::up-arrow, QSpinBox::down-arrow {
-    width: 8px;
+                        <string notr="true">/* === Horizontal Slider === */
+QSlider::groove:horizontal {
     height: 8px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #E0F2CE, stop: 1 #c6d8b1
+    );
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #648047, stop: 1 #7ea857
+    );
+    border-radius: 4px;
+}
+
+QSlider::add-page:horizontal {
+    background: #E0F2CE;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #ffffff;
+    border: 2px solid #648047;
+    width: 14px;
+    height: 18px;
+    border-radius: 9px;
+    margin: -5px 0;
+    transition: all 0.5s ease;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #648047;
+    border: 2px solid #ffffff;
+
+}
+
+QSlider::handle:horizontal:pressed {
+    background: #7ea857;
+    border: 2px solid #ffffff;
 }
 </string>
                        </property>
                        <property name="maximum">
-                        <number>90</number>
+                        <number>100</number>
+                       </property>
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
@@ -1401,40 +1321,64 @@ QSpinBox::up-arrow, QSpinBox::down-arrow {
 }</string>
                        </property>
                        <property name="text">
-                        <string>Min Ratio</string>
+                        <string>Min Ratio: 0</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QDoubleSpinBox" name="minRatioDoubleSpinBox">
+                      <widget class="QSlider" name="minRatioDoubleSlider">
                        <property name="styleSheet">
-                        <string notr="true">QDoubleSpinBox {
-    background-color: #FFFFFF;   /* White background */
-    color: #000000;              /* Black text */
-    border: 1px solid #A0A0A0;  /* Thin gray border */
-    border-radius: 2px;          /* Rounded corners */
-    padding: 2px 6px;            /* Space inside box */
-    min-height: 18px;
-}
-
-/* Optional: style the up/down arrows */
-QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
-    subcontrol-origin: border;
-    subcontrol-position: top right;   /* up button */
-    width: 20px;
-    border-left: 1px solid #A0A0A0;
-    border-radius: 0;
-}
-
-QDoubleSpinBox::down-button {
-    subcontrol-position: bottom right; /* down button */
-}
-
-QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
-    width: 8px;
+                        <string notr="true">/* === Horizontal Slider === */
+QSlider::groove:horizontal {
     height: 8px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #E0F2CE, stop: 1 #c6d8b1
+    );
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #648047, stop: 1 #7ea857
+    );
+    border-radius: 4px;
+}
+
+QSlider::add-page:horizontal {
+    background: #E0F2CE;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #ffffff;
+    border: 2px solid #648047;
+    width: 14px;
+    height: 18px;
+    border-radius: 9px;
+    margin: -5px 0;
+    transition: all 0.5s ease;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #648047;
+    border: 2px solid #ffffff;
+
+}
+
+QSlider::handle:horizontal:pressed {
+    background: #7ea857;
+    border: 2px solid #ffffff;
 }
 </string>
+                       </property>
+                       <property name="maximum">
+                        <number>100</number>
+                       </property>
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
@@ -1479,40 +1423,67 @@ QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
 }</string>
                        </property>
                        <property name="text">
-                        <string>Max Volume</string>
+                        <string>Max Volume: 0</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QDoubleSpinBox" name="maxVolumeDoubleSpinBox">
+                      <widget class="QSlider" name="maxVolumeDoubleSlider">
                        <property name="styleSheet">
-                        <string notr="true">QDoubleSpinBox {
-    background-color: #FFFFFF;   /* White background */
-    color: #000000;              /* Black text */
-    border: 1px solid #A0A0A0;  /* Thin gray border */
-    border-radius: 2px;          /* Rounded corners */
-    padding: 2px 6px;            /* Space inside box */
-    min-height: 18px;
-}
-
-/* Optional: style the up/down arrows */
-QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
-    subcontrol-origin: border;
-    subcontrol-position: top right;   /* up button */
-    width: 20px;
-    border-left: 1px solid #A0A0A0;
-    border-radius: 0;
-}
-
-QDoubleSpinBox::down-button {
-    subcontrol-position: bottom right; /* down button */
-}
-
-QDoubleSpinBox::up-arrow, QDoubleSpinBox::down-arrow {
-    width: 8px;
+                        <string notr="true">/* === Horizontal Slider === */
+QSlider::groove:horizontal {
     height: 8px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #E0F2CE, stop: 1 #c6d8b1
+    );
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #648047, stop: 1 #7ea857
+    );
+    border-radius: 4px;
+}
+
+QSlider::add-page:horizontal {
+    background: #E0F2CE;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #ffffff;
+    border: 2px solid #648047;
+    width: 14px;
+    height: 18px;
+    border-radius: 9px;
+    margin: -5px 0;
+    transition: all 0.5s ease;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #648047;
+    border: 2px solid #ffffff;
+
+}
+
+QSlider::handle:horizontal:pressed {
+    background: #7ea857;
+    border: 2px solid #ffffff;
 }
 </string>
+                       </property>
+                       <property name="minimum">
+                        <number>1</number>
+                       </property>
+                       <property name="maximum">
+                        <number>100</number>
+                       </property>
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
                        </property>
                       </widget>
                      </item>

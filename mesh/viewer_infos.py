@@ -2,6 +2,7 @@ import vtk
 import numpy as np
 import pyvista as pv
 import os
+import re
 
 def setup_stl_viewer(widget):
     """Initialize the STL viewer inside the given widget."""
@@ -186,3 +187,44 @@ def on_camera_view_changed(widget, view_name: str):
         camera.SetFocalPoint(center)
         renderer.ResetCamera()
         renderer.GetRenderWindow().Render()
+        
+
+def slider_to_param(slider_value, min_val, max_val, step=None):
+    """Convert slider value (0-100) to actual parameter value with optional rounding."""
+    val = min_val + (slider_value / 100.0) * (max_val - min_val)
+    if step:
+        val = round(val / step) * step
+        
+    val = round(val, 2)  # round to 2 decimal places for display
+    return val
+
+
+def bind_slider_to_label(slider, label, min_val, max_val, step=None, separator=":"):
+    """
+    Updates the numeric part of a QLabel based on slider value.
+    Slider value is mapped to [min_val, max_val] with optional step.
+    
+    Label must already contain description and suffix.
+    Example label text: 'Opacity: 45%'
+    """
+    original_text = label.text()
+
+    if separator not in original_text:
+        raise ValueError(f"Separator '{separator}' not found in label text")
+
+    description, rest = original_text.split(separator, 1)
+    description = description.strip()
+
+    # Try to extract suffix (everything after the number)
+    match = re.search(r"[\d\.]+(.*)", rest)
+    suffix = match.group(1).strip() if match else ""
+
+    def update_label(slider_value):
+        mapped_value = slider_to_param(slider_value, min_val, max_val, step)
+        label.setText(f"{description}{separator} {mapped_value}{suffix}")
+
+    # Initialize label with current slider value
+    update_label(slider.value())
+    
+    # Connect slider signal
+    slider.valueChanged.connect(update_label)

@@ -34,7 +34,10 @@ def display_tet_mesh(widget, vtk_unstructured_grid):
     widget.tet_renderer.AddActor(actor)
     widget.tet_renderer.SetBackground(0.83, 0.83, 0.83)
     widget.tet_renderer.ResetCamera()
-
+    
+    # Render
+    widget.tetView.GetRenderWindow().Render()
+'''
     # Initialize clipped actors
     widget.clipped_tet_surface = vtk.vtkActor()
     surface_mapper = vtk.vtkDataSetMapper()
@@ -53,6 +56,5 @@ def display_tet_mesh(widget, vtk_unstructured_grid):
     # Add clipped actors to renderer
     widget.tet_renderer.AddActor(widget.clipped_tet_surface)
     widget.tet_renderer.AddActor(widget.clipped_tet_wire)
+    '''
     
-    # Render
-    widget.tetView.GetRenderWindow().Render()

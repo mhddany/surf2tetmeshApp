@@ -30,13 +30,13 @@ def compute_surface_normals(mesh):
 
     return centroids, normals, surf
 
-def display_normals(widget, actor, renderer, normals_length=1.0, normals_actor_attr="normals_actor"):
+def display_normals(widget, actor, renderer, ratio=5.0, normals_actor_attr="normals_actor"):
     """
     Compute and display normals for a mesh actor.
     widget: the main Widget instance (contains stl_mesh or tet_mesh)
     actor: vtkActor for which normals are computed
     renderer: corresponding vtkRenderer
-    normals_length: scale factor for arrows
+    ratio: percentage of max mesh dimension for arrow length (0-100)
     normals_actor_attr: attribute name in widget to store the normals actor
     """
     # Remove previous normals actor
@@ -63,6 +63,12 @@ def display_normals(widget, actor, renderer, normals_length=1.0, normals_actor_a
     v3 = nodes[faces_raw[:, 2]]
     normals = np.cross(v2 - v1, v3 - v1)
     normals /= np.linalg.norm(normals, axis=1)[:, np.newaxis]
+
+    # Compute mesh size for scaling arrows
+    bbox_min = np.min(nodes, axis=0)
+    bbox_max = np.max(nodes, axis=0)
+    max_dim = np.max(bbox_max - bbox_min)
+    normals_length = (ratio / 100.0) * max_dim
 
     # Create VTK points
     points = vtk.vtkPoints()
@@ -99,11 +105,12 @@ def display_normals(widget, actor, renderer, normals_length=1.0, normals_actor_a
     setattr(widget, normals_actor_attr, normals_actor)
     renderer.GetRenderWindow().Render()
 
+
 def update_face_normals(widget):
     """
     Wrapper to update normals for both STL and Tet actors
     based on the current spinbox value.
     """
-    length = widget.normalsLengthLabelSpinBox.value()
+    length = widget.normalsLengthLabelSlider.value()/10
     display_normals(widget, widget.stl_actor, widget.stl_renderer, length, "stl_normals_actor")
     display_normals(widget, widget.tet_actor, widget.tet_renderer, length, "tet_normals_actor")
