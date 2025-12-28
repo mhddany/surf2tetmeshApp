@@ -1,6 +1,7 @@
 import vtk
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 from PySide6.QtWidgets import QWidget, QFileDialog, QDialog, QVBoxLayout, QLabel, QProgressBar
+from PySide6.QtCore import QTimer
 from ui_applayout import Ui_Widget  # generated from Qt Designer
 import numpy as np
 import pyvista as pv
@@ -26,6 +27,7 @@ class Widget(QWidget, Ui_Widget):
         # Connect buttons
         self.selectFileButton.clicked.connect(lambda: select_stl_file(self))      
         self.generateMeshButton.clicked.connect(lambda: generate_tet_mesh(self))  
+        self.saveMeshButton.clicked.connect(lambda: rotate_for_gif(self, steps=180, angle_per_step=2, interval_ms=30))
         
         # Connect sliders to labels        
         bind_slider_to_label(
@@ -64,5 +66,31 @@ class Widget(QWidget, Ui_Widget):
         # self.tessellatedSlider.valueChanged.connect(lambda: update_clipped_mesh(self))
       
   
+def rotate_for_gif(self, steps=180, angle_per_step=2, interval_ms=30):
+    """
+    Rotate both STL and Tet viewers once for GIF generation.
+
+    steps: number of frames
+    angle_per_step: degrees per frame
+    interval_ms: time between frames
+    """
+    self._gif_step = 0
+
+    def rotate_once():
+        if self._gif_step >= steps:
+            self._gif_timer.stop()
+            return
+
+        for renderer in (self.stl_renderer, self.tet_renderer):
+            camera = renderer.GetActiveCamera()
+            camera.Azimuth(angle_per_step)
+            renderer.ResetCameraClippingRange()
+            renderer.GetRenderWindow().Render()
+
+        self._gif_step += 1
+
+    self._gif_timer = QTimer(self)
+    self._gif_timer.timeout.connect(rotate_once)
+    self._gif_timer.start(interval_ms)
 
 
