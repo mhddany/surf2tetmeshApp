@@ -26,7 +26,7 @@ Surf2TetMesh bridges the gap between 3D modeling and simulation by letting users
 ### 1️⃣ Load an STL Surface Mesh
 > The app supports drag-and-drop or file selection from your desktop.
 
-![Load STL Demo](assets/demo_load_stl.gif)  
+![Load STL Demo](assets/loadstlfile.gif)  
 *Loading and visualizing an STL surface mesh.*
 
 ---
@@ -34,7 +34,7 @@ Surf2TetMesh bridges the gap between 3D modeling and simulation by letting users
 ### 2️⃣ Generate Tetrahedral Mesh
 > Adjust TetGen parameters and create a volumetric mesh with one click.
 
-![Generate Mesh Demo](assets/demo_generate_mesh.gif)  
+![Generate Mesh Demo](assets/generatemesh.gif)  
 *Fine-tuning TetGen parameters and generating a tetrahedral mesh.*
 
 ---
@@ -42,7 +42,7 @@ Surf2TetMesh bridges the gap between 3D modeling and simulation by letting users
 ### 3️⃣ Explore Mesh Visualization
 > Switch between display modes and interact with the 3D scene.
 
-![Display Settings Demo](assets/demo_display_settings.gif)  
+![Display Settings Demo](assets/visualizemesh.gif)  
 *Toggling between surface, wireframe, and volume renderings.*
 
 ---
