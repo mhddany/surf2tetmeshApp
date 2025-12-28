@@ -8,6 +8,8 @@
 > **Surf2TetMesh** is a modern desktop application for converting **surface meshes (STL)** into **volumetric tetrahedral meshes** ready for **Finite Element Method (FEM)** simulation.  
 > Built with Python, PySide6, Qt Designer, and VTK — it combines interactive visualization with robust mesh generation powered by **TetGen**.
 
+![Load STL Demo](assets/spin.gif)  
+
 ---
 
 ## 🧭 Overview
